@@ -271,10 +271,7 @@ function load(){try{const r=localStorage.getItem(STORE);if(r){const d=JSON.parse
     if(parseInt(y)>=2026&&!d.years[y].monthly)d.years[y].monthly=emptyMonthly();
     if(d.years[y].inpsEff===undefined) d.years[y].inpsEff=0;
   });
-  // Auto-crea anno successivo se manca
-  const maxY=Math.max(...Object.keys(d.years).map(Number));
-  if(!d.years[maxY+1]){d.years[maxY+1]={ricavi:0,aliq:15,accI:0,accN:0,inpsEff:0,note:'Creato automaticamente per catena acconti.',monthly:(maxY+1)>=2026?emptyMonthly():null};}
-  return d;}}catch(e){}return JSON.parse(JSON.stringify(DEFAULTS));}
+return d;}}catch(e){}return JSON.parse(JSON.stringify(DEFAULTS));}
 function save(){try{localStorage.setItem(STORE,JSON.stringify(S));}catch(e){}}
 
 let S=load();
