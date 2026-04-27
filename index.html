@@ -8,12 +8,12 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;background:#03050a;color:#e2e8f0;font-family:'Syne',system-ui,sans-serif}
-:root{
+:root{h
   --g:#34d399;--gd:rgba(52,211,153,.12);--gb:rgba(52,211,153,.2);
   --r:#f87171;--a:#f59e0b;--b:#60a5fa;--p:#a78bfa;
   --bg:#03050a;--bg2:#0a0f1e;--bg3:#0f172a;--bg4:#1e293b;
   --txt:#e2e8f0;--mut:#64748b;--sub:#94a3b8;
-  --mono:'JetBrains Mono',monospace;
+  --mono:'JetBrains Mono',monospace;h
 }
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
@@ -876,7 +876,7 @@ function updM(i,f,v){
   S.years[curY].ricavi=getRicavi(S.years[curY]);
   save();R();
 }
-function updAK(v){S.apiKey=v;save();}
+function updAK(v){S.apiKey=v.trim();save();}
 function togKey(){showKey=!showKey;R();}
 function toggleProroga(v){S.proroga=v;save();R();}
 function setSug(t){const el=document.getElementById('cin');if(el)el.value=t;}
@@ -937,7 +937,7 @@ async function sendChat(){
   const inp=document.getElementById('cin');
   const txt=inp?.value?.trim();
   if(!txt||chatLoading) return;
-  if(!S.apiKey){
+  if(!S.apiKey || !S.apiKey.trim()){
     msgs.push({r:'ai',t:'⚠️ Inserisci la chiave API Anthropic per usare il consulente.'});
     R();return;
   }
