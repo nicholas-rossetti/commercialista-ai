@@ -968,7 +968,7 @@ Rispondi: 1) Risposta diretta 2) Importo preciso 3) Cosa fare. Conciso.`;
     const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',
       headers:{'Content-Type':'application/json','x-api-key':S.apiKey,
         'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-      body:JSON.stringify({model:'claude-3-5-sonnet-20241022',max_tokens:900,system:sys,
+      body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:900,system:sys,
         messages:msgs.filter((_,i)=>i>0).map(m=>({role:m.r==='ai'?'assistant':'user',content:m.t}))})});
     const d=await res.json();
     msgs.push({r:'ai',t:d.content?.find(b=>b.type==='text')?.text||'Errore.'});
