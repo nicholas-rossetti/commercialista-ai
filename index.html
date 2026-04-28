@@ -395,7 +395,7 @@ function buildF24(){
     const cls=st.pdfStatus==='converting'?'converting':st.pdfStatus==='ready'?'ready':'error';
     const icon=st.pdfStatus==='converting'?'<span class="f24-spin">\u23F3</span>':st.pdfStatus==='ready'?'\u2705':'\u274C';
     const txt=st.pdfStatus==='converting'?'PDF caricato \u2014 Estraendo pagina 1...':
-               st.pdfStatus==='ready'?'Pagina estratta \u2014 Pronto per l'analisi':
+               st.pdfStatus==='ready'?'Pagina estratta \u2014 Pronto per l\'analisi':
                'Errore conversione PDF';
     pdfStatusHtml=`<div class="f24-pdf-status ${cls}">${icon} ${txt}</div>`;
   }
