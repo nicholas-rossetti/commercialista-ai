@@ -23,23 +23,23 @@ input[type=number]{-moz-appearance:textfield}
 ::-webkit-scrollbar-track{background:transparent}
 .app{display:flex;height:100vh;overflow:hidden;position:relative;z-index:1}
 .bg-grid{position:fixed;inset:0;pointer-events:none;z-index:0;
-  background-image:linear-gradient(rgba(52,211,153,.02) 1px,transparent 1px),
-  linear-gradient(90deg,rgba(52,211,153,.02) 1px,transparent 1px);
-  background-size:44px 44px}
+background-image:linear-gradient(rgba(52,211,153,.02) 1px,transparent 1px),
+linear-gradient(90deg,rgba(52,211,153,.02) 1px,transparent 1px);
+background-size:44px 44px}
 /* SIDEBAR */
 .sb{width:210px;flex-shrink:0;background:var(--bg2);border-right:1px solid rgba(52,211,153,.1);
-  display:flex;flex-direction:column;overflow:hidden}
+display:flex;flex-direction:column;overflow:hidden}
 .sb-head{padding:18px 14px 10px;border-bottom:1px solid rgba(52,211,153,.07)}
 .logo{display:flex;align-items:center;gap:10px}
 .logo-icon{width:34px;height:34px;background:linear-gradient(135deg,var(--g),#059669);
-  border-radius:10px;display:flex;align-items:center;justify-content:center;
-  font-size:1rem;flex-shrink:0;box-shadow:0 0 16px rgba(52,211,153,.25)}
+border-radius:10px;display:flex;align-items:center;justify-content:center;
+font-size:1rem;flex-shrink:0;box-shadow:0 0 16px rgba(52,211,153,.25)}
 .logo-t{font-size:0.875rem;font-weight:800;color:#f1f5f9}
 .logo-s{font-size:0.6875rem;color:var(--mut);margin-top:1px}
 .yrs-list{flex:1;overflow-y:auto;padding:8px 6px}
 .yr-lbl{font-size:0.6875rem;color:var(--mut);letter-spacing:1.5px;text-transform:uppercase;padding:6px 6px 4px;font-weight:700}
 .yr-item{display:flex;align-items:center;gap:6px;padding:9px 10px;border-radius:9px;
-  cursor:pointer;margin-bottom:3px;border:1px solid transparent;transition:.15s}
+cursor:pointer;margin-bottom:3px;border:1px solid transparent;transition:.15s}
 .yr-item:hover{background:var(--gd)}
 .yr-item.act{background:var(--gd);border-color:var(--gb)}
 .yr-num{font-family:var(--mono);font-size:0.9375rem;font-weight:800;color:var(--g);flex:1}
@@ -47,23 +47,23 @@ input[type=number]{-moz-appearance:textfield}
 .yr-sub{font-size:0.6875rem;font-family:var(--mono);font-weight:700}
 .yr-type{font-size:0.625rem;color:var(--mut);margin-bottom:1px}
 .yr-del{opacity:0;font-size:0.75rem;color:var(--mut);cursor:pointer;padding:2px 4px;
-  border-radius:4px;border:none;background:none;transition:.15s}
+border-radius:4px;border:none;background:none;transition:.15s}
 .yr-item:hover .yr-del{opacity:1}
 .yr-del:hover{color:var(--r);background:rgba(248,113,113,.1)}
 .add-btn{margin:6px;padding:10px;border-radius:9px;border:1px dashed var(--gb);
-  background:none;color:var(--g);font-size:0.6875rem;font-weight:700;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;gap:5px;transition:.2s;font-family:'Syne',sans-serif}
+background:none;color:var(--g);font-size:0.6875rem;font-weight:700;cursor:pointer;
+display:flex;align-items:center;justify-content:center;gap:5px;transition:.2s;font-family:'Syne',sans-serif}
 .add-btn:hover{background:var(--gd)}
 .sb-foot{padding:10px 6px;border-top:1px solid rgba(52,211,153,.07)}
 .nav-btn{display:flex;align-items:center;gap:7px;width:100%;padding:8px 10px;
-  border-radius:8px;border:none;background:none;color:var(--mut);font-size:0.6875rem;
-  font-weight:700;cursor:pointer;text-align:left;transition:.15s;font-family:'Syne',sans-serif}
+border-radius:8px;border:none;background:none;color:var(--mut);font-size:0.6875rem;
+font-weight:700;cursor:pointer;text-align:left;transition:.15s;font-family:'Syne',sans-serif}
 .nav-btn:hover{color:var(--txt);background:rgba(255,255,255,.04)}
 .nav-btn.on{color:var(--g);background:var(--gd)}
 /* MAIN */
 .main{flex:1;overflow:hidden;display:flex;flex-direction:column}
 .mh{background:rgba(3,5,10,.9);backdrop-filter:blur(20px);
-  border-bottom:1px solid rgba(52,211,153,.1);padding:0 22px;flex-shrink:0}
+border-bottom:1px solid rgba(52,211,153,.1);padding:0 22px;flex-shrink:0}
 .mh-top{display:flex;align-items:center;gap:16px;padding:13px 0 0}
 .mh-year{font-size:1.625rem;font-weight:900;color:#f1f5f9;font-family:var(--mono)}
 .mh-mid{flex:1;min-width:0}
@@ -74,18 +74,18 @@ input[type=number]{-moz-appearance:textfield}
 .mh-rval{font-size:1.25rem;font-weight:900;font-family:var(--mono)}
 .tabs{display:flex;gap:2px;padding-top:8px;overflow-x:auto}
 .tab{padding:8px 14px;border-radius:7px 7px 0 0;border:none;cursor:pointer;
-  font-size:0.75rem;font-weight:700;background:transparent;transition:.2s;
-  font-family:'Syne',sans-serif;white-space:nowrap;border-bottom:2px solid transparent}
+font-size:0.75rem;font-weight:700;background:transparent;transition:.2s;
+font-family:'Syne',sans-serif;white-space:nowrap;border-bottom:2px solid transparent}
 .tab.on{background:rgba(52,211,153,.1);color:var(--g);border-bottom-color:var(--g)}
 .tab:not(.on){color:var(--mut)}
 .tab:hover:not(.on){color:var(--sub)}
 .content{flex:1;overflow-y:auto;padding:20px 22px}
 /* CARDS */
 .card{background:rgba(15,23,42,.85);border:1px solid rgba(52,211,153,.1);
-  border-radius:13px;padding:18px 20px;backdrop-filter:blur(8px)}
+border-radius:13px;padding:18px 20px;backdrop-filter:blur(8px)}
 .card+.card{margin-top:14px}
 .ctitle{font-size:0.6875rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-  color:var(--g);margin-bottom:14px;display:flex;align-items:center;gap:6px}
+color:var(--g);margin-bottom:14px;display:flex;align-items:center;gap:6px}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
@@ -94,23 +94,23 @@ input[type=number]{-moz-appearance:textfield}
 .flbl{font-size:0.6875rem;color:var(--sub);margin-bottom:5px;display:block}
 .fnote{font-size:0.6875rem;color:var(--mut);margin-top:3px;line-height:1.5}
 .iw{display:flex;align-items:center;background:var(--bg3);
-  border:1px solid var(--gb);border-radius:8px;overflow:hidden}
+border:1px solid var(--gb);border-radius:8px;overflow:hidden}
 .iw.warn{border-color:var(--a)}
 .ipfx{padding:9px 10px;font-size:0.75rem;color:var(--mut);
-  background:rgba(52,211,153,.04);border-right:1px solid rgba(52,211,153,.08)}
+background:rgba(52,211,153,.04);border-right:1px solid rgba(52,211,153,.08)}
 .iw input{flex:1;background:transparent;border:none;outline:none;
-  color:#f1f5f9;font-size:0.875rem;font-weight:700;font-family:var(--mono);padding:9px 11px}
+color:#f1f5f9;font-size:0.875rem;font-weight:700;font-family:var(--mono);padding:9px 11px}
 .iw textarea{flex:1;background:transparent;border:none;outline:none;
-  color:var(--sub);font-size:0.75rem;font-family:'Syne',sans-serif;
-  padding:9px 11px;resize:none;height:55px;line-height:1.5}
+color:var(--sub);font-size:0.75rem;font-family:'Syne',sans-serif;
+padding:9px 11px;resize:none;height:55px;line-height:1.5}
 .tog{display:flex;gap:6px}
 .tog-btn{flex:1;padding:8px 10px;border-radius:8px;border:1px solid rgba(52,211,153,.1);
-  background:var(--bg3);color:var(--mut);font-size:0.6875rem;font-weight:700;
-  cursor:pointer;transition:.15s;font-family:'Syne',sans-serif}
+background:var(--bg3);color:var(--mut);font-size:0.6875rem;font-weight:700;
+cursor:pointer;transition:.15s;font-family:'Syne',sans-serif}
 .tog-btn.on{background:var(--gd);border-color:var(--g);color:var(--g)}
 /* TAX ROWS */
 .txr{display:flex;justify-content:space-between;align-items:center;
-  padding:8px 0;border-bottom:1px solid rgba(52,211,153,.05)}
+padding:8px 0;border-bottom:1px solid rgba(52,211,153,.05)}
 .txr:last-child{border:none}
 .txl{font-size:0.75rem;color:var(--sub)}
 .txs{font-size:0.6875rem;color:var(--mut);margin-top:1px}
@@ -132,16 +132,16 @@ input[type=number]{-moz-appearance:textfield}
 /* MONTHLY TABLE */
 .mtable{width:100%;border-collapse:collapse;font-size:0.75rem}
 .mtable th{padding:6px 8px;text-align:right;color:var(--mut);font-size:0.625rem;
-  letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid rgba(52,211,153,.08);font-weight:600}
+letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid rgba(52,211,153,.08);font-weight:600}
 .mtable th:first-child{text-align:left}
 .mtable td{padding:5px 6px;text-align:right;border-bottom:1px solid rgba(52,211,153,.04)}
 .mtable td:first-child{text-align:left;color:var(--sub);font-weight:600;font-size:0.6875rem}
 .mtable tr.tot-row td{border-top:1px solid rgba(52,211,153,.15);
-  font-weight:800;font-family:var(--mono);color:#f1f5f9;padding-top:8px}
+font-weight:800;font-family:var(--mono);color:#f1f5f9;padding-top:8px}
 .mtable tr.tot-row td:first-child{color:var(--g)}
 .mini-input{background:var(--bg3);border:1px solid rgba(52,211,153,.12);
-  border-radius:6px;padding:5px 7px;color:#f1f5f9;font-size:0.8125rem;
-  font-family:var(--mono);font-weight:700;width:80px;outline:none;text-align:right}
+border-radius:6px;padding:5px 7px;color:#f1f5f9;font-size:0.8125rem;
+font-family:var(--mono);font-weight:700;width:80px;outline:none;text-align:right}
 .mini-input:focus{border-color:var(--g)}
 /* BAR CHART */
 .bar-chart{display:flex;flex-direction:column;gap:6px;margin-top:8px}
@@ -157,12 +157,12 @@ input[type=number]{-moz-appearance:textfield}
 /* HIST TABLE */
 .ht{width:100%;border-collapse:collapse}
 .ht th{font-size:0.625rem;color:var(--mut);letter-spacing:1px;text-transform:uppercase;
-  padding:7px 12px;text-align:right;font-weight:600;border-bottom:1px solid rgba(52,211,153,.08)}
+padding:7px 12px;text-align:right;font-weight:600;border-bottom:1px solid rgba(52,211,153,.08)}
 .ht th:first-child{text-align:left}
 .ht td{padding:11px 12px;text-align:right;border-bottom:1px solid rgba(52,211,153,.05);
-  font-family:var(--mono);font-size:0.8125rem;font-weight:600;color:var(--sub)}
+font-family:var(--mono);font-size:0.8125rem;font-weight:600;color:var(--sub)}
 .ht td:first-child{text-align:left;font-family:'Syne',sans-serif;
-  font-size:0.9375rem;font-weight:800;color:var(--g)}
+font-size:0.9375rem;font-weight:800;color:var(--g)}
 .ht tr:hover td{background:rgba(52,211,153,.03);cursor:pointer}
 /* DEADLINE */
 .dl-card{border-radius:11px;padding:14px 16px;margin-bottom:10px}
@@ -170,7 +170,7 @@ input[type=number]{-moz-appearance:textfield}
 .dl-date{font-size:0.875rem;font-weight:800}
 .dl-tot{font-size:1.3125rem;font-weight:900;font-family:var(--mono)}
 .dl-item{display:flex;justify-content:space-between;align-items:center;
-  padding:8px 11px;background:rgba(3,5,10,.45);border-radius:7px;margin-bottom:5px}
+padding:8px 11px;background:rgba(3,5,10,.45);border-radius:7px;margin-bottom:5px}
 .dl-lbl{font-size:0.75rem;color:var(--sub)}
 .dl-note{font-size:0.625rem;color:var(--mut)}
 .dl-val{font-size:0.8125rem;font-weight:700;font-family:var(--mono)}
@@ -179,42 +179,63 @@ input[type=number]{-moz-appearance:textfield}
 .chat-msgs{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:9px;padding-bottom:10px}
 .cbbl{max-width:85%;padding:10px 14px;font-size:0.8125rem;line-height:1.65;white-space:pre-wrap}
 .cbbl.user{align-self:flex-end;background:rgba(52,211,153,.1);
-  border:1px solid rgba(52,211,153,.2);border-radius:13px 13px 3px 13px;color:var(--txt)}
+border:1px solid rgba(52,211,153,.2);border-radius:13px 13px 3px 13px;color:var(--txt)}
 .cbbl.ai{align-self:flex-start;background:rgba(15,23,42,.9);
-  border:1px solid rgba(52,211,153,.08);border-radius:13px 13px 13px 3px;color:var(--txt)}
+border:1px solid rgba(52,211,153,.08);border-radius:13px 13px 13px 3px;color:var(--txt)}
 .ai-lbl{font-size:0.625rem;color:var(--g);font-weight:700;letter-spacing:.8px;margin-bottom:4px}
 .chat-irow{display:flex;gap:7px;margin-top:8px}
 .chat-in{flex:1;padding:10px 14px;border-radius:10px;background:var(--bg3);
-  border:1px solid var(--gb);color:#f1f5f9;font-size:0.8125rem;outline:none;font-family:'Syne',sans-serif}
+border:1px solid var(--gb);color:#f1f5f9;font-size:0.8125rem;outline:none;font-family:'Syne',sans-serif}
 .chat-send{padding:10px 15px;border-radius:10px;background:var(--gd);
-  border:1px solid var(--gb);color:var(--g);font-size:1.0625rem;cursor:pointer}
+border:1px solid var(--gb);color:var(--g);font-size:1.0625rem;cursor:pointer}
 .chat-send:disabled{opacity:.35;cursor:not-allowed}
 .chat-dots{display:flex;gap:3px;padding:10px 14px;align-self:flex-start;
-  background:rgba(15,23,42,.9);border:1px solid rgba(52,211,153,.08);border-radius:13px 13px 13px 3px}
+background:rgba(15,23,42,.9);border:1px solid rgba(52,211,153,.08);border-radius:13px 13px 13px 3px}
 .dot{width:6px;height:6px;border-radius:50%;background:var(--g);animation:bou 1.2s infinite}
 .dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}
 .csug{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px}
 .csug-btn{padding:4px 10px;border-radius:16px;border:1px solid var(--gb);
-  background:var(--gd);color:var(--g);font-size:0.6875rem;font-weight:700;cursor:pointer;font-family:'Syne',sans-serif}
+background:var(--gd);color:var(--g);font-size:0.6875rem;font-weight:700;cursor:pointer;font-family:'Syne',sans-serif}
 .empty{display:flex;flex-direction:column;align-items:center;justify-content:center;
-  height:50%;gap:12px;color:var(--mut)}
+height:50%;gap:12px;color:var(--mut)}
 .empty-i{font-size:2.75rem;opacity:.25}
 .apikey-wrap{display:flex;gap:7px;margin-bottom:7px}
 .apikey-input{flex:1;padding:9px 13px;border-radius:8px;background:var(--bg3);
-  border:1px solid var(--gb);color:#f1f5f9;font-size:0.8125rem;outline:none;font-family:var(--mono)}
+border:1px solid var(--gb);color:#f1f5f9;font-size:0.8125rem;outline:none;font-family:var(--mono)}
 .eye-btn{padding:9px 12px;border-radius:8px;background:var(--bg4);
-  border:1px solid rgba(255,255,255,.06);color:var(--mut);cursor:pointer}
+border:1px solid rgba(255,255,255,.06);color:var(--mut);cursor:pointer}
 .proroga-toggle{display:flex;align-items:center;gap:8px;padding:8px 12px;
-  background:var(--bg3);border-radius:8px;border:1px solid rgba(52,211,153,.1);margin-bottom:10px}
+background:var(--bg3);border-radius:8px;border:1px solid rgba(52,211,153,.1);margin-bottom:10px}
 .proroga-check{width:16px;height:16px;cursor:pointer;accent-color:var(--g)}
 .savings-box{padding:14px 16px;border-radius:10px;background:rgba(52,211,153,.05);
-  border:1px solid var(--gb);margin-top:12px}
+border:1px solid var(--gb);margin-top:12px}
 .legend-dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+/* F24 OCR */
+.f24-dropzone{border:2px dashed var(--gb);border-radius:13px;padding:36px 20px;
+text-align:center;cursor:pointer;transition:.2s;background:var(--gd);position:relative}
+.f24-dropzone:hover,.f24-dropzone.drag-over{border-color:var(--g);background:rgba(52,211,153,.18)}
+.f24-dropzone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.f24-preview{max-width:100%;max-height:320px;border-radius:10px;border:1px solid var(--gb);display:block;margin:10px auto}
+.f24-table{width:100%;border-collapse:collapse;font-size:0.75rem;margin-top:8px}
+.f24-table th{padding:6px 10px;text-align:left;color:var(--mut);font-size:0.625rem;
+letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid rgba(52,211,153,.1);font-weight:600}
+.f24-table td{padding:8px 10px;border-bottom:1px solid rgba(52,211,153,.05);font-family:var(--mono);font-size:0.8125rem;font-weight:600}
+.f24-table tr:last-child td{border:none}
+.f24-extract-btn{width:100%;padding:12px;border-radius:10px;border:none;
+background:linear-gradient(135deg,var(--g),#059669);color:#03050a;font-weight:800;
+font-size:0.875rem;cursor:pointer;font-family:'Syne',sans-serif;transition:.2s;margin-top:10px}
+.f24-extract-btn:disabled{opacity:.4;cursor:not-allowed}
+.f24-apply-btn{width:100%;padding:11px;border-radius:10px;border:1px solid var(--g);
+background:var(--gd);color:var(--g);font-weight:800;font-size:0.875rem;cursor:pointer;
+font-family:'Syne',sans-serif;transition:.2s;margin-top:8px}
+.f24-apply-btn:hover{background:rgba(52,211,153,.25)}
+.f24-spin{display:inline-block;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 @keyframes bou{0%,80%,100%{transform:translateY(0);opacity:.4}40%{transform:translateY(-5px);opacity:1}}
 @keyframes fuA{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
 .fu{animation:fuA .2s ease}
 @media(max-width:680px){
-  .sb{width:170px}.g2,.g3,.g4{grid-template-columns:1fr}.content{padding:14px 12px}}
+.sb{width:170px}.g2,.g3,.g4{grid-template-columns:1fr}.content{padding:14px 12px}}
 </style>
 </head>
 <body>
@@ -225,24 +246,18 @@ const COEFF=.78,INPS_RATE=.2607,STORE='cmrcl_v5';
 const MESI=['Gen','Feb','Mar','Apr','Mag','Giu','Lug','Ago','Set','Ott','Nov','Dic'];
 const MESI_F=['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
 const COL_STUDIO='#34d399',COL_RB='#a78bfa',COL_ALT='#60a5fa';
-
 function calcT(ricavi,aliq,inpsDedOverride){
-  const bi=ricavi*COEFF;                // reddito lordo = base INPS
-  const inps=bi*INPS_RATE;              // INPS DOVUTA sull'anno
-  const inpsDed=(inpsDedOverride&&inpsDedOverride>0)?inpsDedOverride:inps; // INPS deducibile
-  const bf=Math.max(0,bi-inpsDed);      // base imponibile fiscale
-  const imp=bf*(aliq/100);              // imposta sostitutiva
+  const bi=ricavi*COEFF;
+  const inps=bi*INPS_RATE;
+  const inpsDed=(inpsDedOverride&&inpsDedOverride>0)?inpsDedOverride:inps;
+  const bf=Math.max(0,bi-inpsDed);
+  const imp=bf*(aliq/100);
   return{ricavi,bi,inps,inpsDed,bf,imp,tot:inps+imp,netto:ricavi-inps-imp};
 }
-
-// Calcola INPS effettivamente versata nell'anno (deducibile per imposta)
-// = saldo INPS anno precedente (pagato a giu) + acconti INPS anno corrente (pagati giu+nov)
 function getInpsDed(year){
   const yr=S.years[year];
   if(!yr) return 0;
-  // Override manuale dall'utente (campo inpsEff)
   if(yr.inpsEff>0) return yr.inpsEff;
-  // Auto-calcolo: saldo INPS anno-1 + acconti INPS anno corrente
   const prevY=year-1;
   const yrPrev=S.years[prevY];
   if(yrPrev&&getRicavi(yrPrev)>0){
@@ -250,13 +265,11 @@ function getInpsDed(year){
     const saldoPrev=Math.max(0,inpsPrev-(yrPrev.accN||0));
     return saldoPrev+(yr.accN||0);
   }
-  return 0; // fallback: calcT userà INPS calcolata
+  return 0;
 }
 const fmt=n=>new Intl.NumberFormat('it-IT',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n??0);
 const fmtD=n=>new Intl.NumberFormat('it-IT',{style:'currency',currency:'EUR',minimumFractionDigits:2,maximumFractionDigits:2}).format(n??0);
-
 function emptyMonthly(){return Array.from({length:12},()=>({studio:0,rb:0,altro:0}));}
-
 const DEFAULTS={apiKey:'',proroga:false,years:{
   2022:{ricavi:4795,aliq:15,accI:0,accN:0,inpsEff:0,note:'RPF 2023: Ricavi €4.795 · INPS dovuta €981 · Imposta €561 · Primo anno, nessun acconto versato.',monthly:null},
   2023:{ricavi:17177,aliq:15,accI:672,accN:785,inpsEff:1767,note:'RPF 2024: Ricavi €17.177 · INPS dovuta €3.514 · INPS versata €1.767 · Imposta €1.745 · Acconti: imp €672 + INPS €785.',monthly:null},
@@ -265,24 +278,24 @@ const DEFAULTS={apiKey:'',proroga:false,years:{
   2026:{ricavi:0,aliq:15,accI:0,accN:0,inpsEff:0,note:'Compila mese per mese nel tab Mensile.',monthly:emptyMonthly()},
   2027:{ricavi:0,aliq:15,accI:0,accN:0,inpsEff:0,note:'Creato automaticamente per catena acconti.',monthly:emptyMonthly()}
 }};
-
 function load(){try{const r=localStorage.getItem(STORE);if(r){const d=JSON.parse(r);
   Object.keys(d.years).forEach(y=>{
     if(parseInt(y)>=2026&&!d.years[y].monthly)d.years[y].monthly=emptyMonthly();
     if(d.years[y].inpsEff===undefined) d.years[y].inpsEff=0;
   });
-return d;}}catch(e){}return JSON.parse(JSON.stringify(DEFAULTS));}
+  return d;}}catch(e){}return JSON.parse(JSON.stringify(DEFAULTS));}
 function save(){try{localStorage.setItem(STORE,JSON.stringify(S));}catch(e){}}
-
 let S=load();
 let curY=Math.max(...Object.keys(S.years).map(Number));
 let curT='dati';
 let msgs=[{r:'ai',t:'Ciao Nicholas! Ho tutti i tuoi dati fiscali dal 2022 al 2025, verificati dalle dichiarazioni RPF. Dal 2026 puoi inserire i ricavi mese per mese nel tab Mensile. Cosa vuoi sapere?'}];
 let chatLoading=false,showKey=false;
 
+// F24 OCR state
+let f24State={img:null,imgType:'image/jpeg',imgData:null,loading:false,result:null,error:null,applied:false};
+
 // RENDER
 function R(){document.getElementById('app').innerHTML=buildApp();bindEv();}
-
 function buildApp(){
   const yrs=Object.keys(S.years).map(Number).sort((a,b)=>b-a);
   const yr=S.years[curY];
@@ -292,8 +305,7 @@ function buildApp(){
   const sN=t?t.inps-(yr.accN||0):0;
   const saldo=sI+sN;
   const hcol=saldo>50?'var(--r)':saldo<-50?'var(--g)':'var(--a)';
-  const isGlob=curT==='storico'||curT==='scadenze'||curT==='ai';
-
+  const isGlob=curT==='storico'||curT==='scadenze'||curT==='ai'||curT==='f24';
   return`<div class="sb">
   <div class="sb-head">
     <div class="logo">
@@ -323,6 +335,7 @@ function buildApp(){
     <button class="nav-btn${curT==='storico'?' on':''}" onclick="setT('storico')">📊 Storico</button>
     <button class="nav-btn${curT==='scadenze'?' on':''}" onclick="setT('scadenze')">📅 Scadenziario</button>
     <button class="nav-btn${curT==='ai'?' on':''}" onclick="setT('ai')">🤖 Consulente AI</button>
+    <button class="nav-btn${curT==='f24'?' on':''}" onclick="setT('f24')">📷 F24 Auto-Extract</button>
     <div style="border-top:1px solid rgba(52,211,153,.07);margin-top:6px;padding-top:6px">
       <button class="nav-btn" onclick="exportData()" style="font-size:10px">💾 Esporta dati</button>
       <button class="nav-btn" onclick="document.getElementById('imp-file').click()" style="font-size:10px">📂 Importa dati</button>
@@ -335,7 +348,7 @@ function buildApp(){
     <div class="mh-top">
       <div>
         <div class="mh-lbl">Anno fiscale</div>
-        <div class="mh-year">${isGlob?(curT==='storico'?'Storico':curT==='scadenze'?'Scadenziario':'Consulente AI'):curY}</div>
+        <div class="mh-year">${isGlob?(curT==='storico'?'Storico':curT==='scadenze'?'Scadenziario':curT==='f24'?'F24 OCR':' Consulente AI'):curY}</div>
       </div>
       <div class="mh-mid">
         <div class="mh-lbl">ATECO 86.90.29 · Coeff. 78% · INPS 26,07%</div>
@@ -343,28 +356,29 @@ function buildApp(){
       </div>
       ${!isGlob&&t&&ricavi>0?`<div class="mh-right">
         <div class="mh-rlbl">${curT==='acconti'?'Da pagare nel '+curY:'Saldo giugno '+(curY+1)}</div>
-        <div class="mh-rval" style="color:${curT==='acconti'?(()=>{const pY=curY-1;const yP=S.years[pY];if(!yP||!getRicavi(yP))return'var(--mut)';const rP=getRicavi(yP);const tP=calcT(rP,yP.aliq||15,getInpsDed(pY));const tot=(tP.imp-(yP.accI||0))+(tP.inps-(yP.accN||0))+tP.imp*.4+tP.inps*.5+tP.imp*.6+tP.inps*.5;return tot>0?'var(--r)':'var(--g)';})():hcol}">${curT==='acconti'?(()=>{const pY=curY-1;const yP=S.years[pY];if(!yP||!getRicavi(yP))return'—';const rP=getRicavi(yP);const tP=calcT(rP,yP.aliq||15,getInpsDed(pY));const sI2=tP.imp-(yP.accI||0),sN2=tP.inps-(yP.accN||0);const totAnno=(sI2+sN2+tP.imp*.4+tP.inps*.5)+(tP.imp*.6+tP.inps*.5);return fmt(totAnno);})():fmt(Math.abs(saldo))}</div>
+        <div class="mh-rval" style="color:${curT==='acconti'?(()=>{const pY=curY-1;const yP=S.years[pY];if(!yP||!getRicavi(yP))return'var(--mut)';const rP=getRicavi(yP);const tP=calcT(rP,yP.aliq||15,getInpsDed(pY));const tot=(tP.imp-(yP.accI||0))+(tP.inps-(yP.accN||0))+tP.imp*.4+tP.inps*.5+tP.imp*.6+tP.inps*.5;return tot>0?'var(--r)':'var(--g)';})():hcol}">
+          ${curT==='acconti'?(()=>{const pY=curY-1;const yP=S.years[pY];if(!yP||!getRicavi(yP))return'—';const rP=getRicavi(yP);const tP=calcT(rP,yP.aliq||15,getInpsDed(pY));const sI2=tP.imp-(yP.accI||0),sN2=tP.inps-(yP.accN||0);const totAnno=(sI2+sN2+tP.imp*.4+tP.inps*.5)+(tP.imp*.6+tP.inps*.5);return fmt(totAnno);})():fmt(Math.abs(saldo))}
+        </div>
       </div>`:''}
     </div>
     ${!isGlob?`<div class="tabs">
       ${[['dati','📋 Dati'],['calcolo','🧮 Calcolo'],['acconti','💳 Acconti'],
-         ...(parseInt(curY)>=2026?[['mensile','📆 Mensile']]:[])
-        ].map(([id,lb])=>`<div class="tab${curT===id?' on':''}" onclick="setT('${id}')">${lb}</div>`).join('')}
+        ...(parseInt(curY)>=2026?[['mensile','📆 Mensile']]:[])
+      ].map(([id,lb])=>`<div class="tab${curT===id?' on':''}" onclick="setT('${id}')">${lb}</div>`).join('')}
     </div>`:''}
   </div>
   <div class="content">${buildContent()}</div>
 </div>`;
 }
-
 function getRicavi(yr){
   if(yr.monthly){return yr.monthly.reduce((s,m)=>s+(m.studio||0)+(m.rb||0)+(m.altro||0),0);}
   return yr.ricavi||0;
 }
-
 function buildContent(){
   if(curT==='storico') return buildStorico();
   if(curT==='scadenze') return buildScadenze();
   if(curT==='ai') return buildAI();
+  if(curT==='f24') return buildF24();
   const yr=S.years[curY];
   if(!yr) return '<div class="empty"><div class="empty-i">📂</div><div>Seleziona un anno</div></div>';
   if(curT==='dati') return buildDati(yr);
@@ -374,80 +388,302 @@ function buildContent(){
   return '';
 }
 
+// ── F24 OCR ──────────────────────────────────────────────────────────────────
+function buildF24(){
+  const st=f24State;
+  const yrs=Object.keys(S.years).map(Number).sort((a,b)=>b-a);
+  const selYear=st.selectedYear||Math.max(...yrs);
+
+  // Build results table
+  let resultsHtml='';
+  if(st.result&&st.result.codici&&st.result.codici.length>0){
+    const codici=st.result.codici;
+    const totI=codici.filter(c=>['1790','1791'].includes(String(c.codice).trim())).reduce((s,c)=>s+(parseFloat(c.importo)||0),0);
+    const totN=codici.filter(c=>isInpsCode(c.codice)).reduce((s,c)=>s+(parseFloat(c.importo)||0),0);
+    resultsHtml=`
+    <div class="card" style="margin-top:12px;border-color:rgba(52,211,153,.25)">
+      <div class="ctitle">✅ Codici estratti dal F24</div>
+      ${st.result.data?`<div style="font-size:11px;color:var(--sub);margin-bottom:10px">📅 Data F24: <strong style="color:var(--g)">${st.result.data}</strong></div>`:''}
+      <table class="f24-table">
+        <thead><tr><th>Codice</th><th>Descrizione</th><th>Importo</th><th>Tipo</th></tr></thead>
+        <tbody>
+          ${codici.map(c=>{
+            const isInps=isInpsCode(c.codice);
+            const isImp=['1790','1791'].includes(String(c.codice).trim());
+            const badge=isInps?'<span style="color:var(--p);font-size:10px">INPS→accN</span>':isImp?'<span style="color:var(--b);font-size:10px">IMP→accI</span>':'<span style="color:var(--mut);font-size:10px">altro</span>';
+            return`<tr>
+              <td style="color:var(--g);font-weight:800">${c.codice}</td>
+              <td style="font-family:'Syne',sans-serif;color:var(--sub);font-size:11px">${c.descrizione||'—'}</td>
+              <td style="color:#f1f5f9">${fmtD(parseFloat(c.importo)||0)}</td>
+              <td>${badge}</td>
+            </tr>`;
+          }).join('')}
+        </tbody>
+      </table>
+      ${st.result.errori&&st.result.errori.length>0?`<div class="al w" style="margin-top:10px;font-size:11px">⚠️ Campi non letti: ${st.result.errori.join(', ')}</div>`:''}
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px">
+        <div style="padding:10px 14px;border-radius:9px;background:rgba(96,165,250,.07);border:1px solid rgba(96,165,250,.2)">
+          <div style="font-size:9px;color:var(--b);font-weight:700;margin-bottom:3px">accI (1790+1791)</div>
+          <div style="font-size:20px;font-weight:900;color:var(--b);font-family:var(--mono)">${fmt(totI)}</div>
+        </div>
+        <div style="padding:10px 14px;border-radius:9px;background:rgba(167,139,250,.07);border:1px solid rgba(167,139,250,.2)">
+          <div style="font-size:9px;color:var(--p);font-weight:700;margin-bottom:3px">accN (INPS)</div>
+          <div style="font-size:20px;font-weight:900;color:var(--p);font-family:var(--mono)">${fmt(totN)}</div>
+        </div>
+      </div>
+      <div style="margin-top:12px">
+        <label class="flbl">Applica a anno</label>
+        <select id="f24-year-sel" style="background:var(--bg3);border:1px solid var(--gb);border-radius:8px;padding:8px 12px;color:#f1f5f9;font-family:var(--mono);font-size:14px;font-weight:700;outline:none;width:100%" onchange="f24State.selectedYear=parseInt(this.value)">
+          ${yrs.map(y=>`<option value="${y}" ${y===selYear?'selected':''}>${y}</option>`).join('')}
+        </select>
+      </div>
+      ${st.applied?`<div class="al i" style="margin-top:10px">✅ Dati aggiunti per anno ${st.appliedYear}!</div>`:''}
+      <button class="f24-apply-btn" onclick="applyF24(${totI},${totN})">
+        💾 Applica → accI +${fmt(totI)} · accN +${fmt(totN)} all'anno ${selYear}
+      </button>
+    </div>`;
+  }
+
+  let errorHtml='';
+  if(st.error){
+    errorHtml=`<div class="al d" style="margin-top:10px">❌ Errore: ${st.error}</div>`;
+  }
+
+  return`<div class="fu">
+    <div class="card">
+      <div class="ctitle">📷 F24 AUTO-EXTRACT · Claude Vision API</div>
+      ${!S.apiKey?`<div class="al w">⚠️ Inserisci la chiave API Anthropic nel tab <strong>🤖 Consulente AI</strong> prima di usare questa funzione.</div>`:''}
+      <div class="al i" style="font-size:11px">📋 Carica uno screenshot F24 (JPG/PNG). Claude Vision estrarrà automaticamente codici tributo e importi, e aggiornerà accI e accN dell'anno selezionato.</div>
+
+      <div class="f24-dropzone${st.loading?' f24-loading':''}" id="f24-drop" ondragover="f24DragOver(event)" ondragleave="f24DragLeave(event)" ondrop="f24Drop(event)">
+        <input type="file" accept="image/jpeg,image/png,image/gif,image/webp" onchange="f24FileChange(event)" id="f24-file-input"/>
+        ${st.imgData?`
+          <img class="f24-preview" src="${st.imgData}" alt="F24 preview"/>
+          <div style="font-size:11px;color:var(--sub);margin-top:6px">✓ Immagine caricata · clicca o trascina per sostituire</div>
+        `:`
+          <div style="font-size:2.5rem;margin-bottom:10px">📄</div>
+          <div style="font-size:14px;font-weight:700;color:#f1f5f9;margin-bottom:5px">Trascina qui screenshot F24</div>
+          <div style="font-size:12px;color:var(--mut)">oppure clicca per caricare · JPG, PNG, WebP</div>
+        `}
+      </div>
+
+      ${st.imgData?`
+        <button class="f24-extract-btn" onclick="f24Extract()" ${st.loading||!S.apiKey?'disabled':''}>
+          ${st.loading?'<span class="f24-spin">⏳</span> Analisi in corso...':'🔍 Estrai dati con Claude Vision'}
+        </button>
+      `:''}
+    </div>
+    ${errorHtml}
+    ${resultsHtml}
+  </div>`;
+}
+
+function isInpsCode(cod){
+  const c=String(cod).trim().toUpperCase();
+  // INPS gestione separata: 0 to 399 area INPS, common: 0100, 0200, 0300, 0400, 0601, 0609, 2800, 2500
+  if(/^(0[0-9]{3}|[2][0-9]{3})$/i.test(c)) return true;
+  if(c.startsWith('INPS')) return true;
+  // Specific known INPS codes for forfettari
+  const inpsCodes=['0100','0200','0300','0400','0601','0609','2800','2500','2501','2503','2550','2560','P10','P12'];
+  return inpsCodes.includes(c);
+}
+
+function f24DragOver(e){e.preventDefault();document.getElementById('f24-drop').classList.add('drag-over');}
+function f24DragLeave(e){document.getElementById('f24-drop').classList.remove('drag-over');}
+function f24Drop(e){
+  e.preventDefault();
+  document.getElementById('f24-drop').classList.remove('drag-over');
+  const file=e.dataTransfer.files[0];
+  if(file) f24LoadFile(file);
+}
+function f24FileChange(e){
+  const file=e.target.files[0];
+  if(file) f24LoadFile(file);
+}
+function f24LoadFile(file){
+  if(!file.type.startsWith('image/')){
+    f24State.error='Formato non supportato. Usa JPG, PNG o WebP.';
+    f24State.result=null;f24State.applied=false;R();return;
+  }
+  const reader=new FileReader();
+  reader.onload=function(ev){
+    f24State.imgData=ev.target.result;
+    f24State.imgType=file.type||'image/jpeg';
+    f24State.result=null;f24State.error=null;f24State.applied=false;
+    R();
+  };
+  reader.readAsDataURL(file);
+}
+
+async function f24Extract(){
+  if(!f24State.imgData||!S.apiKey){return;}
+  f24State.loading=true;f24State.error=null;f24State.result=null;f24State.applied=false;R();
+
+  // Extract base64 data (remove data:image/xxx;base64, prefix)
+  const base64=f24State.imgData.split(',')[1];
+  const mediaType=f24State.imgType||'image/jpeg';
+
+  const prompt=`Leggi questo modello F24 italiano. Estrai SOLO un oggetto JSON valido (nessun testo extra, nessun markdown) con questa struttura esatta:
+{"codici":[{"codice":"1790","importo":374,"descrizione":"Acconto imposta sostitutiva"},...],"data":"YYYY-MM","errori":[]}
+
+Regole:
+- "codici": array di tutti i codici tributo presenti con importo numerico (non stringa) in euro
+- Includi TUTTI i codici visibili: 1790, 1791, e codici INPS (tipicamente 0100, 0200, 0300, 0400, 0601, 0609, 2800 ecc.)
+- "data": anno e mese di riferimento del pagamento (formato YYYY-MM, es. "2025-06")
+- "errori": array di stringhe per eventuali codici illeggibili
+- SOLO JSON valido, nessun altro testo`;
+
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'x-api-key':S.apiKey,
+        'anthropic-version':'2023-06-01',
+        'anthropic-dangerous-direct-browser-access':'true'
+      },
+      body:JSON.stringify({
+        model:'claude-3-5-sonnet-20241022',
+        max_tokens:1024,
+        messages:[{
+          role:'user',
+          content:[
+            {type:'image',source:{type:'base64',media_type:mediaType,data:base64}},
+            {type:'text',text:prompt}
+          ]
+        }]
+      })
+    });
+
+    if(!res.ok){
+      const errData=await res.json().catch(()=>({}));
+      throw new Error(`API error ${res.status}: ${errData.error?.message||res.statusText}`);
+    }
+
+    const data=await res.json();
+    const textBlock=data.content?.find(b=>b.type==='text');
+    if(!textBlock) throw new Error('Nessuna risposta testuale dall API');
+
+    // Parse JSON from response (handle potential markdown code fences)
+    let jsonStr=textBlock.text.trim();
+    const fence=jsonStr.match(/```(?:json)?\s*([\s\S]*?)```/);
+    if(fence) jsonStr=fence[1].trim();
+    // Also try to extract just the JSON object
+    const objMatch=jsonStr.match(/\{[\s\S]*\}/);
+    if(objMatch) jsonStr=objMatch[0];
+
+    const parsed=JSON.parse(jsonStr);
+    if(!parsed.codici||!Array.isArray(parsed.codici)){
+      throw new Error('Risposta non valida: manca il campo "codici"');
+    }
+    // Ensure importo is number
+    parsed.codici=parsed.codici.map(c=>({...c,importo:parseFloat(c.importo)||0}));
+
+    // Auto-detect year from data field
+    if(parsed.data){
+      const yearMatch=String(parsed.data).match(/(20\d{2})/);
+      if(yearMatch){
+        const detectedYear=parseInt(yearMatch[1]);
+        if(S.years[detectedYear]) f24State.selectedYear=detectedYear;
+      }
+    }
+
+    f24State.result=parsed;
+    f24State.error=null;
+  }catch(err){
+    f24State.error=err.message;
+    f24State.result=null;
+  }
+  f24State.loading=false;R();
+}
+
+function applyF24(totI,totN){
+  const year=f24State.selectedYear||Math.max(...Object.keys(S.years).map(Number));
+  if(!S.years[year]){
+    f24State.error='Anno '+year+' non trovato nel registro.';R();return;
+  }
+  S.years[year].accI=(S.years[year].accI||0)+totI;
+  S.years[year].accN=(S.years[year].accN||0)+totN;
+  save();
+  f24State.applied=true;
+  f24State.appliedYear=year;
+  R();
+}
+
 // ── DATI ──────────────────────────────────────────────────────────────────────
 function buildDati(yr){
   const isM=parseInt(curY)>=2026;
   const ricavi=getRicavi(yr);
   const wR=!ricavi||ricavi===0;
   return`<div class="fu">
-  ${wR?`<div class="al w">⚠️ Ricavi ${curY} non ancora inseriti${isM?' — vai al tab Mensile per inserire mese per mese':' — inserisci il totale qui sotto'}.</div>`:''}
-  <div class="g2">
-    <div>
-      <div class="card">
-        <div class="ctitle">📥 Dati ${curY}</div>
-        ${!isM?`<div class="fld">
-          <label class="flbl">Ricavi annui ${curY} (fatturati SDI)</label>
-          <div class="iw${wR?' warn':''}">
-            <div class="ipfx">€</div>
-            <input type="number" value="${yr.ricavi||0}" onchange="updF('ricavi',this.value)"/>
+    ${wR?`<div class="al w">⚠️ Ricavi ${curY} non ancora inseriti${isM?' — vai al tab Mensile per inserire mese per mese':' — inserisci il totale qui sotto'}.</div>`:''}
+    <div class="g2">
+      <div>
+        <div class="card">
+          <div class="ctitle">📥 Dati ${curY}</div>
+          ${!isM?`<div class="fld">
+            <label class="flbl">Ricavi annui ${curY} (fatturati SDI)</label>
+            <div class="iw${wR?' warn':''}">
+              <div class="ipfx">€</div>
+              <input type="number" value="${yr.ricavi||0}" onchange="updF('ricavi',this.value)"/>
+            </div>
+            <div class="fnote">Solo ricavi fatturati tramite SDI — escludi contanti non dichiarati</div>
+          </div>`:`<div class="al i" style="font-size:10px">📆 Anno ${curY}: i ricavi si inseriscono <strong>mese per mese per fonte</strong> nel tab "Mensile". Totale attuale: <strong>${fmt(ricavi)}</strong></div>`}
+          <div class="fld">
+            <label class="flbl">Aliquota imposta sostitutiva</label>
+            <div class="tog">
+              <button class="tog-btn${yr.aliq==5?' on':''}" onclick="updF('aliq',5)">5% · Start-up</button>
+              <button class="tog-btn${yr.aliq!=5?' on':''}" onclick="updF('aliq',15)">15% · Ordinaria</button>
+            </div>
           </div>
-          <div class="fnote">Solo ricavi fatturati tramite SDI — escludi contanti non dichiarati</div>
-        </div>`:`<div class="al i" style="font-size:10px">📆 Anno ${curY}: i ricavi si inseriscono <strong>mese per mese per fonte</strong> nel tab "Mensile". Totale attuale: <strong>${fmt(ricavi)}</strong></div>`}
-        <div class="fld">
-          <label class="flbl">Aliquota imposta sostitutiva</label>
-          <div class="tog">
-            <button class="tog-btn${yr.aliq==5?' on':''}" onclick="updF('aliq',5)">5% · Start-up</button>
-            <button class="tog-btn${yr.aliq!=5?' on':''}" onclick="updF('aliq',15)">15% · Ordinaria</button>
+          <div class="fld">
+            <label class="flbl">Note</label>
+            <div class="iw"><textarea onchange="updF('note',this.value)" placeholder="Promemoria, eventi particolari...">${yr.note||''}</textarea></div>
           </div>
-        </div>
-        <div class="fld">
-          <label class="flbl">Note</label>
-          <div class="iw"><textarea onchange="updF('note',this.value)" placeholder="Promemoria, eventi particolari...">${yr.note||''}</textarea></div>
         </div>
       </div>
-    </div>
-    <div>
-      <div class="card">
-        <div class="ctitle">💸 Acconti versati in ${curY}</div>
-        <div class="al i" style="font-size:10px">Modelli F24 pagati a giugno e novembre ${curY}.<br/>
-          <strong>Solo acconti</strong> (cod. 1790 per imposta). Il saldo (cod. 1791) NON va qui — lo calcola l'app.</div>
-        <div class="fld">
-          <label class="flbl">Acconto imposta sostitutiva versato (tot. ${curY})</label>
-          <div class="iw${(!yr.accI&&ricavi>0)?' warn':''}">
-            <div class="ipfx">€</div>
-            <input type="number" value="${yr.accI||0}" onchange="updF('accI',this.value)"/>
+      <div>
+        <div class="card">
+          <div class="ctitle">💸 Acconti versati in ${curY}</div>
+          <div class="al i" style="font-size:10px">Modelli F24 pagati a giugno e novembre ${curY}.<br/>
+          <strong>Solo acconti</strong> (cod. 1790 per imposta). Il saldo (cod. 1791) NON va qui — lo calcola l'app.<br/>
+          💡 Usa il tab <strong>📷 F24 Auto-Extract</strong> per estrarre automaticamente dai tuoi F24.</div>
+          <div class="fld">
+            <label class="flbl">Acconto imposta sostitutiva versato (tot. ${curY})</label>
+            <div class="iw${(!yr.accI&&ricavi>0)?' warn':''}">
+              <div class="ipfx">€</div>
+              <input type="number" value="${yr.accI||0}" onchange="updF('accI',this.value)"/>
+            </div>
+            <div class="fnote">Solo cod. <strong>1790</strong> (acconto): giugno (40%) + novembre (60%)</div>
           </div>
-          <div class="fnote">Solo cod. <strong>1790</strong> (acconto): giugno (40%) + novembre (60%)</div>
-        </div>
-        <div class="fld">
-          <label class="flbl">Acconto INPS gest. sep. versato (tot. ${curY})</label>
-          <div class="iw${(!yr.accN&&ricavi>0)?' warn':''}">
-            <div class="ipfx">€</div>
-            <input type="number" value="${yr.accN||0}" onchange="updF('accN',this.value)"/>
+          <div class="fld">
+            <label class="flbl">Acconto INPS gest. sep. versato (tot. ${curY})</label>
+            <div class="iw${(!yr.accN&&ricavi>0)?' warn':''}">
+              <div class="ipfx">€</div>
+              <input type="number" value="${yr.accN||0}" onchange="updF('accN',this.value)"/>
+            </div>
+            <div class="fnote">Solo acconti INPS: giugno (50%) + novembre (50%)</div>
           </div>
-          <div class="fnote">Solo acconti INPS: giugno (50%) + novembre (50%)</div>
-        </div>
-        <div style="height:1px;background:rgba(52,211,153,.06);margin:10px 0"></div>
-        <div class="fld">
-          <label class="flbl">INPS versata effettiva nel ${curY} (opzionale)</label>
-          <div class="iw" style="border-color:rgba(167,139,250,.3)">
-            <div class="ipfx" style="color:var(--p)">€</div>
-            <input type="number" value="${yr.inpsEff||0}" onchange="updF('inpsEff',this.value)" placeholder="0 = auto"/>
-          </div>
-          <div class="fnote">Totale INPS effettivamente uscita dal conto nel ${curY} (saldo anno prima + acconti ${curY}).<br/>
+          <div style="height:1px;background:rgba(52,211,153,.06);margin:10px 0"></div>
+          <div class="fld">
+            <label class="flbl">INPS versata effettiva nel ${curY} (opzionale)</label>
+            <div class="iw" style="border-color:rgba(167,139,250,.3)">
+              <div class="ipfx" style="color:var(--p)">€</div>
+              <input type="number" value="${yr.inpsEff||0}" onchange="updF('inpsEff',this.value)" placeholder="0 = auto"/>
+            </div>
+            <div class="fnote">Totale INPS effettivamente uscita dal conto nel ${curY} (saldo anno prima + acconti ${curY}).<br/>
             Serve per calcolare l'imposta sostitutiva corretta. Trovi il dato nella <strong>dichiarazione RPF</strong> → quadro LM → INPS deducibile.
             ${(()=>{const auto=getInpsDed(curY);return auto>0&&!(yr.inpsEff>0)?`<br/>📊 Valore auto-calcolato: <strong style="color:var(--p)">${fmt(auto)}</strong>`:''})()}</div>
+          </div>
+          ${curY===2022?`<div class="al i" style="font-size:10px">✅ RPF 2023: Ricavi €4.795 · INPS dovuta €981 · Imposta €561 · Primo anno, nessun acconto</div>`:''}
+          ${curY===2023?`<div class="al i" style="font-size:10px">✅ RPF 2024: Ricavi €17.177 · INPS dovuta €3.514 · INPS versata €1.767 · Imposta €1.745 · Acconti: imp €672 + INPS €785</div>`:''}
+          ${curY===2024?`<div class="al i" style="font-size:10px">✅ RPF 2025: Ricavi €11.174 · INPS dovuta €2.272 · INPS versata €3.729 · Imposta €748 · Credito imposta €252</div>`:''}
+          ${curY===2025?`<div class="al i" style="font-size:10px">✅ Ricavi €12.031 (96 fatture) · Acconti F24: imp €554 (giu 374+nov 180) · INPS €1.722 (giu 1.272+nov 450)</div>`:''}
         </div>
-        ${curY===2022?`<div class="al i" style="font-size:10px">✅ RPF 2023: Ricavi €4.795 · INPS dovuta €981 · Imposta €561 · Primo anno, nessun acconto</div>`:''}
-        ${curY===2023?`<div class="al i" style="font-size:10px">✅ RPF 2024: Ricavi €17.177 · INPS dovuta €3.514 · INPS versata €1.767 · Imposta €1.745 · Acconti: imp €672 + INPS €785</div>`:''}
-        ${curY===2024?`<div class="al i" style="font-size:10px">✅ RPF 2025: Ricavi €11.174 · INPS dovuta €2.272 · INPS versata €3.729 · Imposta €748 · Credito imposta €252</div>`:''}
-        ${curY===2025?`<div class="al i" style="font-size:10px">✅ Ricavi €12.031 (96 fatture) · Acconti F24: imp €554 (giu 374+nov 180) · INPS €1.722 (giu 1.272+nov 450)</div>`:''}
+        ${ricavi>0?buildThreshold(ricavi):''}
       </div>
-      ${ricavi>0?buildThreshold(ricavi):''}
-    </div>
-  </div></div>`;
+    </div></div>`;
 }
-
 function buildThreshold(ricavi){
   const pct=Math.min(100,(ricavi/85000)*100);
   const col=pct>85?'var(--r)':pct>65?'var(--a)':'var(--g)';
@@ -462,13 +698,13 @@ function buildThreshold(ricavi){
     </div>
     <div style="font-size:10px;color:var(--mut);margin-top:5px">
       ${pct>=100?`🚨 SUPERATA — fuoriuscita dal forfettario anno successivo`:
-        pct>85?`⚠️ Attenzione: mancano solo ${fmt(85000-ricavi)} alla soglia`:
-        `✓ Margine disponibile: ${fmt(85000-ricavi)} (${(100-pct).toFixed(0)}%)`}
+      pct>85?`⚠️ Attenzione: mancano solo ${fmt(85000-ricavi)} alla soglia`:
+      `✓ Margine disponibile: ${fmt(85000-ricavi)} (${(100-pct).toFixed(0)}%)`}
     </div>
   </div>`;
 }
 
-// ── CALCOLO ───────────────────────────────────────────────────────────────────
+// ── CALCOLO ──────────────────────────────────────────────────────────────────
 function buildCalcolo(yr){
   const ricavi=getRicavi(yr);
   const t=calcT(ricavi,yr.aliq||15,getInpsDed(curY));
@@ -477,62 +713,53 @@ function buildCalcolo(yr){
   const aliqE=ricavi>0?((t.tot/ricavi)*100).toFixed(1):0;
   const showInpsDed=t.inpsDed!==t.inps;
   return`<div class="fu"><div class="g2">
-  <div class="card">
-    <div class="ctitle">🧮 Tasse reali ${curY}</div>
-    <div class="txr"><div><div class="txl">Ricavi ${curY}</div></div><div class="txv cw">${fmt(t.ricavi)}</div></div>
-    <div class="txr"><div><div class="txl">Base imponibile INPS (×78%)</div></div><div class="txv cm">${fmt(t.bi)}</div></div>
-    <div class="txr"><div><div class="txl">INPS dovuta ${curY} (26,07%)</div></div><div class="txv cr">−${fmt(t.inps)}</div></div>
-    ${showInpsDed?`<div class="txr"><div><div class="txl">INPS versata effettiva ${curY}</div><div class="txs">Deducibile per imposta (saldo anno prima + acconti)</div></div><div class="txv cp">−${fmt(t.inpsDed)}</div></div>`:''}
-    <div class="txr"><div><div class="txl">Base imponibile fiscale</div><div class="txs">${showInpsDed?'Reddito − INPS versata':'Reddito − INPS dovuta'}</div></div><div class="txv cm">${fmt(t.bf)}</div></div>
-    <div class="txr"><div><div class="txl">Imposta sostitutiva (${yr.aliq||15}%)</div></div><div class="txv cr">−${fmt(t.imp)}</div></div>
-    <div class="txr big"><div><div class="txl">Totale tasse ${curY}</div></div><div class="txv cr">−${fmt(t.tot)}</div></div>
-    <div class="txr big"><div><div class="txl">Netto annuo</div></div><div class="txv cg">${fmt(t.netto)}</div></div>
-    <div style="margin-top:8px;font-size:10px;color:var(--mut);text-align:right">
-      Aliquota effettiva: <strong style="color:var(--a)">${aliqE}%</strong>
-      &nbsp;·&nbsp; Netto mensile medio: <strong style="color:var(--g)">${fmt(t.netto/12)}</strong>
+    <div class="card">
+      <div class="ctitle">🧮 Tasse reali ${curY}</div>
+      <div class="txr"><div><div class="txl">Ricavi ${curY}</div></div><div class="txv cw">${fmt(t.ricavi)}</div></div>
+      <div class="txr"><div><div class="txl">Base imponibile INPS (×78%)</div></div><div class="txv cm">${fmt(t.bi)}</div></div>
+      <div class="txr"><div><div class="txl">INPS dovuta ${curY} (26,07%)</div></div><div class="txv cr">−${fmt(t.inps)}</div></div>
+      ${showInpsDed?`<div class="txr"><div><div class="txl">INPS versata effettiva ${curY}</div><div class="txs">Deducibile per imposta (saldo anno prima + acconti)</div></div><div class="txv cp">−${fmt(t.inpsDed)}</div></div>`:''}
+      <div class="txr"><div><div class="txl">Base imponibile fiscale</div><div class="txs">${showInpsDed?'Reddito − INPS versata':'Reddito − INPS dovuta'}</div></div><div class="txv cm">${fmt(t.bf)}</div></div>
+      <div class="txr"><div><div class="txl">Imposta sostitutiva (${yr.aliq||15}%)</div></div><div class="txv cr">−${fmt(t.imp)}</div></div>
+      <div class="txr big"><div><div class="txl">Totale tasse ${curY}</div></div><div class="txv cr">−${fmt(t.tot)}</div></div>
+      <div class="txr big"><div><div class="txl">Netto annuo</div></div><div class="txv cg">${fmt(t.netto)}</div></div>
+      <div style="margin-top:8px;font-size:10px;color:var(--mut);text-align:right">
+        Aliquota effettiva: <strong style="color:var(--a)">${aliqE}%</strong> &nbsp;·&nbsp; Netto mensile medio: <strong style="color:var(--g)">${fmt(t.netto/12)}</strong>
+      </div>
     </div>
-  </div>
-  <div class="card" style="border-color:rgba(248,113,113,${tot>0?'.22':'.08'})">
-    <div class="ctitle">📤 Saldo → Giugno ${curY+1}</div>
-    <div class="txr"><div><div class="txl">Imposta sostitutiva dovuta</div></div><div class="txv cw">${fmt(t.imp)}</div></div>
-    <div class="txr"><div><div class="txl">− Acconto versato in ${curY}</div></div><div class="txv cr">−${fmt(yr.accI||0)}</div></div>
-    <div class="txr big"><div><div class="txl">Saldo imposta</div><div class="txs">${sI>0?'Da pagare':'Credito'}</div></div><div class="txv ${sI>0?'cr':'cg'}">${sI>=0?fmt(sI):'−'+fmt(-sI)}</div></div>
-    <div style="height:1px;background:rgba(52,211,153,.06);margin:6px 0"></div>
-    <div class="txr"><div><div class="txl">INPS dovuta</div></div><div class="txv cw">${fmt(t.inps)}</div></div>
-    <div class="txr"><div><div class="txl">− Acconto INPS versato in ${curY}</div></div><div class="txv cr">−${fmt(yr.accN||0)}</div></div>
-    <div class="txr big"><div><div class="txl">Saldo INPS</div><div class="txs">${sN>0?'Da pagare':'Credito'}</div></div><div class="txv ${sN>0?'cr':'cg'}">${sN>=0?fmt(sN):'−'+fmt(-sN)}</div></div>
-    <div style="margin-top:12px;padding:12px 14px;border-radius:9px;background:rgba(248,113,113,.07);border:1px solid rgba(248,113,113,.2)">
-      <div style="font-size:9px;color:var(--r);font-weight:700;letter-spacing:.8px;margin-bottom:3px">SALDO TOTALE ${curY}</div>
-      <div style="font-size:26px;font-weight:900;color:${tot>0?'var(--r)':'var(--g)'};font-family:var(--mono)">${tot>=0?fmt(tot):'−'+fmt(-tot)}</div>
-      <div style="font-size:10px;color:var(--mut);margin-top:3px">${tot>0?'+ acconti '+(curY+1)+' → vedi tab Acconti':'Credito da compensare'}</div>
+    <div class="card" style="border-color:rgba(248,113,113,${tot>0?'.22':'.08'})">
+      <div class="ctitle">📤 Saldo → Giugno ${curY+1}</div>
+      <div class="txr"><div><div class="txl">Imposta sostitutiva dovuta</div></div><div class="txv cw">${fmt(t.imp)}</div></div>
+      <div class="txr"><div><div class="txl">− Acconto versato in ${curY}</div></div><div class="txv cr">−${fmt(yr.accI||0)}</div></div>
+      <div class="txr big"><div><div class="txl">Saldo imposta</div><div class="txs">${sI>0?'Da pagare':'Credito'}</div></div><div class="txv ${sI>0?'cr':'cg'}">${sI>=0?fmt(sI):'−'+fmt(-sI)}</div></div>
+      <div style="height:1px;background:rgba(52,211,153,.06);margin:6px 0"></div>
+      <div class="txr"><div><div class="txl">INPS dovuta</div></div><div class="txv cw">${fmt(t.inps)}</div></div>
+      <div class="txr"><div><div class="txl">− Acconto INPS versato in ${curY}</div></div><div class="txv cr">−${fmt(yr.accN||0)}</div></div>
+      <div class="txr big"><div><div class="txl">Saldo INPS</div><div class="txs">${sN>0?'Da pagare':'Credito'}</div></div><div class="txv ${sN>0?'cr':'cg'}">${sN>=0?fmt(sN):'−'+fmt(-sN)}</div></div>
+      <div style="margin-top:12px;padding:12px 14px;border-radius:9px;background:rgba(248,113,113,.07);border:1px solid rgba(248,113,113,.2)">
+        <div style="font-size:9px;color:var(--r);font-weight:700;letter-spacing:.8px;margin-bottom:3px">SALDO TOTALE ${curY}</div>
+        <div style="font-size:26px;font-weight:900;color:${tot>0?'var(--r)':'var(--g)'};font-family:var(--mono)">${tot>=0?fmt(tot):'−'+fmt(-tot)}</div>
+        <div style="font-size:10px;color:var(--mut);margin-top:3px">${tot>0?'+ acconti '+(curY+1)+' → vedi tab Acconti':'Credito da compensare'}</div>
+      </div>
     </div>
-  </div>
   </div></div>`;
 }
 
-// ── ACCONTI ───────────────────────────────────────────────────────────────────
-// PROSPETTIVA ANNO DI CASSA: Anno X mostra cosa PAGHI nel X (basato su X-1)
+// ── ACCONTI ──────────────────────────────────────────────────────────────────
 function buildAcconti(yr){
   const prevY=curY-1;
   const yrPrev=S.years[prevY];
-
-  // Se non esiste l'anno precedente o non ha ricavi, non possiamo calcolare
   if(!yrPrev||!getRicavi(yrPrev)){
     return`<div class="fu">
-    <div class="al w">⚠️ Per vedere le scadenze fiscali del <strong>${curY}</strong> servono i dati del <strong>${prevY}</strong> (anno precedente).<br/>
-    ${!yrPrev?`L'anno ${prevY} non esiste ancora.
-      <button style="margin-top:6px;padding:6px 12px;border-radius:7px;border:1px solid var(--g);background:var(--gd);color:var(--g);font-weight:700;cursor:pointer;font-family:'Syne',sans-serif" onclick="S.years[${prevY}]={ricavi:0,aliq:15,accI:0,accN:0,inpsEff:0,note:'',monthly:null};save();setY(${prevY});setT('dati')">＋ Crea anno ${prevY}</button>`
-      :`Inserisci i ricavi del ${prevY} nel tab Dati.
-      <button style="margin-top:6px;padding:6px 12px;border-radius:7px;border:1px solid var(--g);background:var(--gd);color:var(--g);font-weight:700;cursor:pointer;font-family:'Syne',sans-serif" onclick="setY(${prevY});setT('dati')">Vai al ${prevY}</button>`}
-    </div></div>`;
+      <div class="al w">⚠️ Per vedere le scadenze fiscali del <strong>${curY}</strong> servono i dati del <strong>${prevY}</strong> (anno precedente).<br/>
+      ${!yrPrev?`L'anno ${prevY} non esiste ancora. <button style="margin-top:6px;padding:6px 12px;border-radius:7px;border:1px solid var(--g);background:var(--gd);color:var(--g);font-weight:700;cursor:pointer;font-family:'Syne',sans-serif" onclick="S.years[${prevY}]={ricavi:0,aliq:15,accI:0,accN:0,inpsEff:0,note:'',monthly:null};save();setY(${prevY});setT('dati')">＋ Crea anno ${prevY}</button>`
+      :`Inserisci i ricavi del ${prevY} nel tab Dati. <button style="margin-top:6px;padding:6px 12px;border-radius:7px;border:1px solid var(--g);background:var(--gd);color:var(--g);font-weight:700;cursor:pointer;font-family:'Syne',sans-serif" onclick="setY(${prevY});setT('dati')">Vai al ${prevY}</button>`}
+      </div></div>`;
   }
-
   const ricaviPrev=getRicavi(yrPrev);
   const tPrev=calcT(ricaviPrev,yrPrev.aliq||15,getInpsDed(prevY));
-  const sI=tPrev.imp-(yrPrev.accI||0); // saldo imposta anno precedente
-  const sN=tPrev.inps-(yrPrev.accN||0); // saldo INPS anno precedente
-
-  // acconti anno CORRENTE calcolati su anno precedente (metodo storico)
+  const sI=tPrev.imp-(yrPrev.accI||0);
+  const sN=tPrev.inps-(yrPrev.accN||0);
   const a1i=tPrev.imp*.4,a1n=tPrev.inps*.5,a2i=tPrev.imp*.6,a2n=tPrev.inps*.5;
   const prorMult=S.proroga?1.004:1;
   const totGiu=(sI+sN+a1i+a1n)*prorMult;
@@ -541,57 +768,55 @@ function buildAcconti(yr){
   const mesiRim=Math.max(1,(new Date(curY,5,1)-now)/(1000*60*60*24*30));
   const rispMens=totGiu/Math.min(mesiRim,6);
   return`<div class="fu">
-  <div class="al d">🚨 <strong>Da pagare ${S.proroga?'Luglio':'Giugno'} ${curY}:</strong> ${fmt(totGiu)}
-    &nbsp;·&nbsp; Risparmia <strong>${fmt(rispMens)}/mese</strong> da oggi.</div>
-  <div class="al p" style="font-size:10px">ℹ️ Questi importi sono calcolati sui <strong>ricavi ${prevY}</strong> (${fmt(ricaviPrev)}) con metodo storico.
-    Il saldo è: tasse reali ${prevY} − acconti versati nel ${prevY}. Gli acconti ${curY} = proiezione su base ${prevY}.</div>
-  <div class="proroga-toggle">
-    <input type="checkbox" class="proroga-check" id="prt" ${S.proroga?'checked':''} onchange="toggleProroga(this.checked)"/>
-    <label for="prt" style="font-size:11px;color:var(--sub);cursor:pointer">
-      <strong style="color:${S.proroga?'var(--a)':'var(--mut)'}">Proroga luglio</strong>
-      ${S.proroga?'— scadenza 31 luglio con <strong style="color:var(--a)">+0,4% interessi</strong>':'— standard: scadenza 30 giugno'}
-    </label>
-  </div>
-  <div class="g2">
-    <div class="card" style="border-color:rgba(248,113,113,.22)">
-      <div class="ctitle">💳 ${S.proroga?'Luglio':'Giugno'} ${curY}</div>
-      ${[[`Saldo imposta ${prevY}`,sI,'Cod. 1791'],[`Saldo INPS ${prevY}`,sN,'Contributi prev.'],[`1° acconto imposta ${curY} (40%)`,a1i,'Cod. 1790'],[`1° acconto INPS ${curY} (50%)`,a1n,'']].map(([l,v,n])=>`
-      <div class="dl-item"><div><div class="dl-lbl">${l}</div><div class="dl-note">${n}</div></div>
-        <div class="dl-val ${v>0?'cr':'cg'}">${fmt(Math.abs(v))}</div></div>`).join('')}
-      ${S.proroga?`<div style="margin:6px 0 0;font-size:10px;color:var(--a);padding:7px 10px;background:rgba(245,158,11,.07);border-radius:7px">Maggiorazione 0,4%: +${fmt((sI+sN+a1i+a1n)*.004)}</div>`:''}
-      <div style="margin-top:10px;padding:11px 13px;border-radius:8px;background:rgba(248,113,113,.07);border:1px solid rgba(248,113,113,.2)">
-        <div style="font-size:9px;color:var(--r);font-weight:700;margin-bottom:3px">TOTALE ${S.proroga?'LUGLIO':'GIUGNO'} ${curY}</div>
-        <div style="font-size:24px;font-weight:900;color:var(--r);font-family:var(--mono)">${fmt(totGiu)}</div>
-      </div>
+    <div class="al d">🚨 <strong>Da pagare ${S.proroga?'Luglio':'Giugno'} ${curY}:</strong> ${fmt(totGiu)} &nbsp;·&nbsp; Risparmia <strong>${fmt(rispMens)}/mese</strong> da oggi.</div>
+    <div class="al p" style="font-size:10px">ℹ️ Questi importi sono calcolati sui <strong>ricavi ${prevY}</strong> (${fmt(ricaviPrev)}) con metodo storico.</div>
+    <div class="proroga-toggle">
+      <input type="checkbox" class="proroga-check" id="prt" ${S.proroga?'checked':''} onchange="toggleProroga(this.checked)"/>
+      <label for="prt" style="font-size:11px;color:var(--sub);cursor:pointer">
+        <strong style="color:${S.proroga?'var(--a)':'var(--mut)'}">Proroga luglio</strong>
+        ${S.proroga?'— scadenza 31 luglio con <strong style="color:var(--a)">+0,4% interessi</strong>':'— standard: scadenza 30 giugno'}
+      </label>
     </div>
-    <div>
-      <div class="card" style="border-color:rgba(245,158,11,.18)">
-        <div class="ctitle">📋 Novembre ${curY}</div>
-        ${[[`2° acconto imposta ${curY} (60%)`,a2i,'Cod. 1790'],[`2° acconto INPS ${curY} (50%)`,a2n,'']].map(([l,v,n])=>`
-        <div class="dl-item"><div><div class="dl-lbl">${l}</div><div class="dl-note">${n}</div></div>
-          <div class="dl-val ca">${fmt(v)}</div></div>`).join('')}
-        <div style="margin-top:10px;padding:11px 13px;border-radius:8px;background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.2)">
-          <div style="font-size:9px;color:var(--a);font-weight:700;margin-bottom:3px">TOTALE NOVEMBRE ${curY}</div>
-          <div style="font-size:24px;font-weight:900;color:var(--a);font-family:var(--mono)">${fmt(totNov)}</div>
+    <div class="g2">
+      <div class="card" style="border-color:rgba(248,113,113,.22)">
+        <div class="ctitle">💳 ${S.proroga?'Luglio':'Giugno'} ${curY}</div>
+        ${[[`Saldo imposta ${prevY}`,sI,'Cod. 1791'],[`Saldo INPS ${prevY}`,sN,'Contributi prev.'],[`1° acconto imposta ${curY} (40%)`,a1i,'Cod. 1790'],[`1° acconto INPS ${curY} (50%)`,a1n,'']].map(([l,v,n])=>`
+          <div class="dl-item"><div><div class="dl-lbl">${l}</div><div class="dl-note">${n}</div></div>
+          <div class="dl-val ${v>0?'cr':'cg'}">${fmt(Math.abs(v))}</div></div>`).join('')}
+        ${S.proroga?`<div style="margin:6px 0 0;font-size:10px;color:var(--a);padding:7px 10px;background:rgba(245,158,11,.07);border-radius:7px">Maggiorazione 0,4%: +${fmt((sI+sN+a1i+a1n)*.004)}</div>`:''}
+        <div style="margin-top:10px;padding:11px 13px;border-radius:8px;background:rgba(248,113,113,.07);border:1px solid rgba(248,113,113,.2)">
+          <div style="font-size:9px;color:var(--r);font-weight:700;margin-bottom:3px">TOTALE ${S.proroga?'LUGLIO':'GIUGNO'} ${curY}</div>
+          <div style="font-size:24px;font-weight:900;color:var(--r);font-family:var(--mono)">${fmt(totGiu)}</div>
         </div>
       </div>
-      <div class="savings-box" style="margin-top:0">
-        <div style="font-size:9px;color:var(--g);font-weight:700;letter-spacing:1px;margin-bottom:8px">💰 PIANO RISPARMIO ${curY}</div>
-        <div class="g3" style="gap:8px">
-          <div><div style="font-size:9px;color:var(--mut)">Giu ${curY}</div><div style="font-size:15px;font-weight:900;color:var(--r);font-family:var(--mono)">${fmt(totGiu)}</div></div>
-          <div><div style="font-size:9px;color:var(--mut)">Nov ${curY}</div><div style="font-size:15px;font-weight:900;color:var(--a);font-family:var(--mono)">${fmt(totNov)}</div></div>
-          <div><div style="font-size:9px;color:var(--mut)">Tot. anno</div><div style="font-size:15px;font-weight:900;color:cw;font-family:var(--mono)">${fmt(totGiu+totNov)}</div></div>
+      <div>
+        <div class="card" style="border-color:rgba(245,158,11,.18)">
+          <div class="ctitle">📋 Novembre ${curY}</div>
+          ${[[`2° acconto imposta ${curY} (60%)`,a2i,'Cod. 1790'],[`2° acconto INPS ${curY} (50%)`,a2n,'']].map(([l,v,n])=>`
+            <div class="dl-item"><div><div class="dl-lbl">${l}</div><div class="dl-note">${n}</div></div>
+            <div class="dl-val ca">${fmt(v)}</div></div>`).join('')}
+          <div style="margin-top:10px;padding:11px 13px;border-radius:8px;background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.2)">
+            <div style="font-size:9px;color:var(--a);font-weight:700;margin-bottom:3px">TOTALE NOVEMBRE ${curY}</div>
+            <div style="font-size:24px;font-weight:900;color:var(--a);font-family:var(--mono)">${fmt(totNov)}</div>
+          </div>
         </div>
-        <div style="margin-top:10px;padding:9px 11px;background:rgba(52,211,153,.07);border-radius:7px">
-          <div style="font-size:10px;color:var(--sub)">Da accantonare ogni mese per giugno:</div>
-          <div style="font-size:18px;font-weight:900;color:var(--g);font-family:var(--mono)">${fmt(rispMens)}/mese</div>
+        <div class="savings-box" style="margin-top:0">
+          <div style="font-size:9px;color:var(--g);font-weight:700;letter-spacing:1px;margin-bottom:8px">💰 PIANO RISPARMIO ${curY}</div>
+          <div class="g3" style="gap:8px">
+            <div><div style="font-size:9px;color:var(--mut)">Giu ${curY}</div><div style="font-size:15px;font-weight:900;color:var(--r);font-family:var(--mono)">${fmt(totGiu)}</div></div>
+            <div><div style="font-size:9px;color:var(--mut)">Nov ${curY}</div><div style="font-size:15px;font-weight:900;color:var(--a);font-family:var(--mono)">${fmt(totNov)}</div></div>
+            <div><div style="font-size:9px;color:var(--mut)">Tot. anno</div><div style="font-size:15px;font-weight:900;font-family:var(--mono)">${fmt(totGiu+totNov)}</div></div>
+          </div>
+          <div style="margin-top:10px;padding:9px 11px;background:rgba(52,211,153,.07);border-radius:7px">
+            <div style="font-size:10px;color:var(--sub)">Da accantonare ogni mese per giugno:</div>
+            <div style="font-size:18px;font-weight:900;color:var(--g);font-family:var(--mono)">${fmt(rispMens)}/mese</div>
+          </div>
         </div>
       </div>
-    </div>
-  </div></div>`;
+    </div></div>`;
 }
 
-// ── MENSILE (2026+) ───────────────────────────────────────────────────────────
+// ── MENSILE (2026+) ──────────────────────────────────────────────────────────
 function buildMensile(yr){
   const m=yr.monthly||emptyMonthly();
   const totS=m.reduce((s,x)=>s+(x.studio||0),0);
@@ -601,151 +826,150 @@ function buildMensile(yr){
   const maxMens=Math.max(...m.map(x=>(x.studio||0)+(x.rb||0)+(x.altro||0)),1);
   const now=new Date();
   const nowM=now.getFullYear()===curY?now.getMonth():-1;
-
   return`<div class="fu">
-  <div class="g2">
-    <div>
-      <div class="card">
-        <div class="ctitle">📆 Ricavi mensili ${curY} per fonte</div>
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:12px;font-size:10px;font-weight:700">
-          <span><span class="legend-dot" style="background:${COL_STUDIO}"></span> Studio (SDI)</span>
-          <span><span class="legend-dot" style="background:${COL_RB}"></span> 🌹 RoseBerry</span>
-          <span><span class="legend-dot" style="background:${COL_ALT}"></span> Altro</span>
+    <div class="g2">
+      <div>
+        <div class="card">
+          <div class="ctitle">📆 Ricavi mensili ${curY} per fonte</div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:12px;font-size:10px;font-weight:700">
+            <span><span class="legend-dot" style="background:${COL_STUDIO}"></span> Studio (SDI)</span>
+            <span><span class="legend-dot" style="background:${COL_RB}"></span> 🌹 RoseBerry</span>
+            <span><span class="legend-dot" style="background:${COL_ALT}"></span> Altro</span>
+          </div>
+          <table class="mtable">
+            <thead><tr>
+              <th style="text-align:left">Mese</th>
+              <th>Studio €</th><th>RoseBerry €</th><th>Altro €</th><th>Tot.</th>
+            </tr></thead>
+            <tbody>
+              ${m.map((row,i)=>{
+                const tot=(row.studio||0)+(row.rb||0)+(row.altro||0);
+                const isNow=i===nowM;const isPast=i<nowM;
+                return`<tr style="${isNow?'background:rgba(52,211,153,.04)':''}">
+                  <td>${MESI[i]}${isNow?' <span style="font-size:8px;color:var(--g)">▶</span>':isPast?' <span style="font-size:8px;color:var(--mut)">✓</span>':''}</td>
+                  <td><input class="mini-input" type="number" value="${row.studio||0}" onchange="updM(${i},'studio',this.value)" style="border-color:${COL_STUDIO}44"/></td>
+                  <td><input class="mini-input" type="number" value="${row.rb||0}" onchange="updM(${i},'rb',this.value)" style="border-color:${COL_RB}44"/></td>
+                  <td><input class="mini-input" type="number" value="${row.altro||0}" onchange="updM(${i},'altro',this.value)" style="border-color:${COL_ALT}44"/></td>
+                  <td style="font-weight:800;color:${tot>0?'#f1f5f9':'var(--mut)'};">${fmt(tot)}</td>
+                </tr>`;
+              }).join('')}
+            </tbody>
+            <tfoot><tr class="tot-row">
+              <td>TOTALE</td>
+              <td style="color:${COL_STUDIO}">${fmt(totS)}</td>
+              <td style="color:${COL_RB}">${fmt(totR)}</td>
+              <td style="color:${COL_ALT}">${fmt(totA)}</td>
+              <td style="color:var(--g)">${fmt(totTot)}</td>
+            </tr></tfoot>
+          </table>
         </div>
-        <table class="mtable">
-          <thead><tr>
-            <th style="text-align:left">Mese</th>
-            <th>Studio €</th><th>RoseBerry €</th><th>Altro €</th><th>Tot.</th>
-          </tr></thead>
-          <tbody>
+      </div>
+      <div>
+        <div class="card">
+          <div class="ctitle">📊 Distribuzione per fonte</div>
+          <div class="g3" style="margin-bottom:14px">
+            <div class="sb2" style="border:1px solid ${COL_STUDIO}33">
+              <div class="sbl">Studio SDI</div>
+              <div class="sbv" style="color:${COL_STUDIO}">${fmt(totS)}</div>
+              <div style="font-size:10px;color:var(--mut);margin-top:3px">${totTot>0?((totS/totTot)*100).toFixed(0):0}%</div>
+            </div>
+            <div class="sb2" style="border:1px solid ${COL_RB}33">
+              <div class="sbl">🌹 RoseBerry</div>
+              <div class="sbv" style="color:${COL_RB}">${fmt(totR)}</div>
+              <div style="font-size:10px;color:var(--mut);margin-top:3px">${totTot>0?((totR/totTot)*100).toFixed(0):0}%</div>
+            </div>
+            <div class="sb2" style="border:1px solid ${COL_ALT}33">
+              <div class="sbl">Altro</div>
+              <div class="sbv" style="color:${COL_ALT}">${fmt(totA)}</div>
+              <div style="font-size:10px;color:var(--mut);margin-top:3px">${totTot>0?((totA/totTot)*100).toFixed(0):0}%</div>
+            </div>
+          </div>
+          <div class="ctitle">📈 Andamento mensile</div>
+          <div class="bar-chart">
             ${m.map((row,i)=>{
-              const tot=(row.studio||0)+(row.rb||0)+(row.altro||0);
-              const isNow=i===nowM;const isPast=i<nowM;
-              return`<tr style="${isNow?'background:rgba(52,211,153,.04)':''}">
-                <td>${MESI[i]}${isNow?' <span style="font-size:8px;color:var(--g)">▶</span>':isPast?' <span style="font-size:8px;color:var(--mut)">✓</span>':''}</td>
-                <td><input class="mini-input" type="number" value="${row.studio||0}" onchange="updM(${i},'studio',this.value)" style="border-color:${COL_STUDIO}44"/></td>
-                <td><input class="mini-input" type="number" value="${row.rb||0}" onchange="updM(${i},'rb',this.value)" style="border-color:${COL_RB}44"/></td>
-                <td><input class="mini-input" type="number" value="${row.altro||0}" onchange="updM(${i},'altro',this.value)" style="border-color:${COL_ALT}44"/></td>
-                <td style="font-weight:800;color:${tot>0?'#f1f5f9':'var(--mut)'};">${fmt(tot)}</td>
-              </tr>`;
+              const s=row.studio||0,r=row.rb||0,a=row.altro||0,tot=s+r+a;
+              const ps=maxMens>0?(s/maxMens*100):0;
+              const pr=maxMens>0?(r/maxMens*100):0;
+              const pa=maxMens>0?(a/maxMens*100):0;
+              return`<div class="bar-row">
+                <div class="bar-lbl">${MESI[i]}</div>
+                <div class="bar-track">
+                  <div class="bar-seg" style="width:${ps}%;background:${COL_STUDIO}bb"></div>
+                  <div class="bar-seg" style="width:${pr}%;background:${COL_RB}bb"></div>
+                  <div class="bar-seg" style="width:${pa}%;background:${COL_ALT}bb"></div>
+                </div>
+                <div class="bar-val">${tot>0?fmt(tot):''}</div>
+              </div>`;
             }).join('')}
-          </tbody>
-          <tfoot><tr class="tot-row">
-            <td>TOTALE</td>
-            <td style="color:${COL_STUDIO}">${fmt(totS)}</td>
-            <td style="color:${COL_RB}">${fmt(totR)}</td>
-            <td style="color:${COL_ALT}">${fmt(totA)}</td>
-            <td style="color:var(--g)">${fmt(totTot)}</td>
-          </tr></tfoot>
-        </table>
-      </div>
-    </div>
-    <div>
-      <div class="card">
-        <div class="ctitle">📊 Distribuzione per fonte</div>
-        <div class="g3" style="margin-bottom:14px">
-          <div class="sb2" style="border:1px solid ${COL_STUDIO}33">
-            <div class="sbl">Studio SDI</div>
-            <div class="sbv" style="color:${COL_STUDIO}">${fmt(totS)}</div>
-            <div style="font-size:10px;color:var(--mut);margin-top:3px">${totTot>0?((totS/totTot)*100).toFixed(0):0}%</div>
           </div>
-          <div class="sb2" style="border:1px solid ${COL_RB}33">
-            <div class="sbl">🌹 RoseBerry</div>
-            <div class="sbv" style="color:${COL_RB}">${fmt(totR)}</div>
-            <div style="font-size:10px;color:var(--mut);margin-top:3px">${totTot>0?((totR/totTot)*100).toFixed(0):0}%</div>
-          </div>
-          <div class="sb2" style="border:1px solid ${COL_ALT}33">
-            <div class="sbl">Altro</div>
-            <div class="sbv" style="color:${COL_ALT}">${fmt(totA)}</div>
-            <div style="font-size:10px;color:var(--mut);margin-top:3px">${totTot>0?((totA/totTot)*100).toFixed(0):0}%</div>
-          </div>
+          ${buildThreshold(totTot)}
         </div>
-        <div class="ctitle">📈 Andamento mensile</div>
-        <div class="bar-chart">
-          ${m.map((row,i)=>{
-            const s=row.studio||0,r=row.rb||0,a=row.altro||0,tot=s+r+a;
-            const ps=maxMens>0?(s/maxMens*100):0;
-            const pr=maxMens>0?(r/maxMens*100):0;
-            const pa=maxMens>0?(a/maxMens*100):0;
-            return`<div class="bar-row">
-              <div class="bar-lbl">${MESI[i]}</div>
-              <div class="bar-track">
-                <div class="bar-seg" style="width:${ps}%;background:${COL_STUDIO}bb"></div>
-                <div class="bar-seg" style="width:${pr}%;background:${COL_RB}bb"></div>
-                <div class="bar-seg" style="width:${pa}%;background:${COL_ALT}bb"></div>
-              </div>
-              <div class="bar-val">${tot>0?fmt(tot):''}</div>
-            </div>`;
-          }).join('')}
-        </div>
-        ${buildThreshold(totTot)}
       </div>
-    </div>
-  </div></div>`;
+    </div></div>`;
 }
 
-// ── STORICO ───────────────────────────────────────────────────────────────────
+// ── STORICO ──────────────────────────────────────────────────────────────────
 function buildStorico(){
   const yrs=Object.keys(S.years).map(Number).sort((a,b)=>a-b);
   if(!yrs.length) return'<div class="empty"><div class="empty-i">📊</div><div>Nessun anno</div></div>';
   const maxR=Math.max(...yrs.map(y=>getRicavi(S.years[y])),1);
   return`<div class="fu">
-  <div class="card" style="margin-bottom:14px;overflow-x:auto">
-    <div class="ctitle">📊 Storico tutti gli anni</div>
-    <table class="ht">
-      <thead><tr>
-        <th>Anno</th><th>Ricavi</th><th>INPS</th><th>Imposta</th>
-        <th>Tot. tasse</th><th>Aliq. eff.</th><th>Netto</th><th>Saldo giu+1</th>
-      </tr></thead>
-      <tbody>
-        ${yrs.map(y=>{
-          const yd=S.years[y];const ri=getRicavi(yd);
-          const t=calcT(ri,yd.aliq||15,getInpsDed(y));
-          const s=t.imp-(yd.accI||0)+t.inps-(yd.accN||0);
-          const ae=ri>0?((t.tot/ri)*100).toFixed(1)+'%':'—';
-          const pct=ri>0?Math.round((ri/maxR)*100):0;
-          const sc=s>50?'cr':s<-50?'cg':'ca';
-          return`<tr onclick="setY(${y});setT('dati')">
-            <td>${y}</td>
-            <td><div style="display:flex;align-items:center;gap:7px">
-              <div style="width:${pct}px;max-width:60px;height:4px;background:var(--g);border-radius:2px;flex-shrink:0"></div>
-              ${ri>0?fmt(ri):`<span style="color:var(--mut)">—</span>`}
-            </div></td>
-            <td class="cr">${ri>0?fmt(t.inps):'—'}</td>
-            <td class="cr">${ri>0?fmt(t.imp):'—'}</td>
-            <td class="cr">${ri>0?fmt(t.tot):'—'}</td>
-            <td class="ca">${ae}</td>
-            <td class="cg">${ri>0?fmt(t.netto):'—'}</td>
-            <td class="${sc}">${ri>0?(s>=0?fmt(s):'−'+fmt(-s)):'—'}</td>
-          </tr>`;
-        }).join('')}
-      </tbody>
-    </table>
-  </div>
-  <div class="g3">
-    ${yrs.map(y=>{
-      const yd=S.years[y];const ri=getRicavi(yd);
-      const t=calcT(ri,yd.aliq||15,getInpsDed(y));
-      const isM=y>=2026;
-      if(!ri) return`<div class="card" style="border-style:dashed;opacity:.5;cursor:pointer" onclick="setY(${y});setT('dati')">
-        <div style="font-size:10px;color:var(--mut);margin-bottom:4px">ANNO ${y}</div>
-        <div style="font-size:13px;color:var(--a);font-weight:700">Da completare</div>
-        ${isM?`<div style="font-size:10px;color:var(--mut)">Vai al tab Mensile</div>`:''}
-      </div>`;
-      const totS=isM?(yd.monthly||[]).reduce((s,m)=>s+(m.studio||0),0):ri;
-      const totR=isM?(yd.monthly||[]).reduce((s,m)=>s+(m.rb||0),0):0;
-      return`<div class="card" style="cursor:pointer" onclick="setY(${y});setT('calcolo')">
-        <div style="font-size:10px;color:var(--mut);margin-bottom:4px">ANNO ${y}</div>
-        <div style="font-size:18px;font-weight:900;color:var(--g);font-family:var(--mono);margin-bottom:6px">${fmt(ri)}</div>
-        ${isM&&totR>0?`<div style="font-size:10px;color:var(--p);margin-bottom:4px">🌹 RoseBerry: ${fmt(totR)}</div>`:''}
-        <div style="font-size:10px;color:var(--mut)">Netto: <strong style="color:var(--g)">${fmt(t.netto)}</strong></div>
-        <div style="font-size:10px;color:var(--mut)">Tasse: <strong style="color:var(--r)">${fmt(t.tot)}</strong></div>
-      </div>`;
-    }).join('')}
-  </div></div>`;
+    <div class="card" style="margin-bottom:14px;overflow-x:auto">
+      <div class="ctitle">📊 Storico tutti gli anni</div>
+      <table class="ht">
+        <thead><tr>
+          <th>Anno</th><th>Ricavi</th><th>INPS</th><th>Imposta</th>
+          <th>Tot. tasse</th><th>Aliq. eff.</th><th>Netto</th><th>Saldo giu+1</th>
+        </tr></thead>
+        <tbody>
+          ${yrs.map(y=>{
+            const yd=S.years[y];const ri=getRicavi(yd);
+            const t=calcT(ri,yd.aliq||15,getInpsDed(y));
+            const s=t.imp-(yd.accI||0)+t.inps-(yd.accN||0);
+            const ae=ri>0?((t.tot/ri)*100).toFixed(1)+'%':'—';
+            const pct=ri>0?Math.round((ri/maxR)*100):0;
+            const sc=s>50?'cr':s<-50?'cg':'ca';
+            return`<tr onclick="setY(${y});setT('dati')">
+              <td>${y}</td>
+              <td><div style="display:flex;align-items:center;gap:7px">
+                <div style="width:${pct}px;max-width:60px;height:4px;background:var(--g);border-radius:2px;flex-shrink:0"></div>
+                ${ri>0?fmt(ri):`<span style="color:var(--mut)">—</span>`}
+              </div></td>
+              <td class="cr">${ri>0?fmt(t.inps):'—'}</td>
+              <td class="cr">${ri>0?fmt(t.imp):'—'}</td>
+              <td class="cr">${ri>0?fmt(t.tot):'—'}</td>
+              <td class="ca">${ae}</td>
+              <td class="cg">${ri>0?fmt(t.netto):'—'}</td>
+              <td class="${sc}">${ri>0?(s>=0?fmt(s):'−'+fmt(-s)):'—'}</td>
+            </tr>`;
+          }).join('')}
+        </tbody>
+      </table>
+    </div>
+    <div class="g3">
+      ${yrs.map(y=>{
+        const yd=S.years[y];const ri=getRicavi(yd);
+        const t=calcT(ri,yd.aliq||15,getInpsDed(y));
+        const isM=y>=2026;
+        if(!ri) return`<div class="card" style="border-style:dashed;opacity:.5;cursor:pointer" onclick="setY(${y});setT('dati')">
+          <div style="font-size:10px;color:var(--mut);margin-bottom:4px">ANNO ${y}</div>
+          <div style="font-size:13px;color:var(--a);font-weight:700">Da completare</div>
+          ${isM?`<div style="font-size:10px;color:var(--mut)">Vai al tab Mensile</div>`:''}
+        </div>`;
+        const totS=isM?(yd.monthly||[]).reduce((s,m)=>s+(m.studio||0),0):ri;
+        const totR=isM?(yd.monthly||[]).reduce((s,m)=>s+(m.rb||0),0):0;
+        return`<div class="card" style="cursor:pointer" onclick="setY(${y});setT('calcolo')">
+          <div style="font-size:10px;color:var(--mut);margin-bottom:4px">ANNO ${y}</div>
+          <div style="font-size:18px;font-weight:900;color:var(--g);font-family:var(--mono);margin-bottom:6px">${fmt(ri)}</div>
+          ${isM&&totR>0?`<div style="font-size:10px;color:var(--p);margin-bottom:4px">🌹 RoseBerry: ${fmt(totR)}</div>`:''}
+          <div style="font-size:10px;color:var(--mut)">Netto: <strong style="color:var(--g)">${fmt(t.netto)}</strong></div>
+          <div style="font-size:10px;color:var(--mut)">Tasse: <strong style="color:var(--r)">${fmt(t.tot)}</strong></div>
+        </div>`;
+      }).join('')}
+    </div></div>`;
 }
 
-// ── SCADENZIARIO ──────────────────────────────────────────────────────────────
+// ── SCADENZIARIO ─────────────────────────────────────────────────────────────
 function buildScadenze(){
   const yrs=Object.keys(S.years).map(Number).sort((a,b)=>a-b);
   const deadlines=[];
@@ -776,88 +1000,75 @@ function buildScadenze(){
     .sort((a,b)=>a.y*100+a.m-(b.y*100+b.m));
   const now=new Date();const nowK=now.getFullYear()*100+now.getMonth()+1;
   return`<div class="fu">
-  <div class="proroga-toggle" style="margin-bottom:14px">
-    <input type="checkbox" class="proroga-check" id="prt2" ${S.proroga?'checked':''} onchange="toggleProroga(this.checked)"/>
-    <label for="prt2" style="font-size:11px;color:var(--sub);cursor:pointer">
-      Usa <strong>proroga luglio</strong> (+0,4% interessi) invece di giugno
-    </label>
-  </div>
-  ${uniq.map(d=>{
-    const past=d.y*100+d.m<nowK;
-    return`<div class="dl-card" style="background:${d.bg};border:1px solid ${d.bd};${past?'opacity:.45':''}">
-      <div class="dl-head">
-        <div>
-          <div class="dl-date" style="color:${d.col}">${d.date}${past?' <span style="font-size:9px;color:var(--mut)">passato</span>':''}</div>
-          <div style="font-size:10px;color:var(--mut)">Scadenza 30 ${d.m===6||d.m===7?(d.m===7?'luglio':'giugno'):'novembre'}</div>
+    <div class="proroga-toggle" style="margin-bottom:14px">
+      <input type="checkbox" class="proroga-check" id="prt2" ${S.proroga?'checked':''} onchange="toggleProroga(this.checked)"/>
+      <label for="prt2" style="font-size:11px;color:var(--sub);cursor:pointer">
+        Usa <strong>proroga luglio</strong> (+0,4% interessi) invece di giugno
+      </label>
+    </div>
+    ${uniq.map(d=>{
+      const past=d.y*100+d.m<nowK;
+      return`<div class="dl-card" style="background:${d.bg};border:1px solid ${d.bd};${past?'opacity:.45':''}">
+        <div class="dl-head">
+          <div>
+            <div class="dl-date" style="color:${d.col}">${d.date}${past?' <span style="font-size:9px;color:var(--mut)">passato</span>':''}</div>
+            <div style="font-size:10px;color:var(--mut)">Scadenza 30 ${d.m===6||d.m===7?(d.m===7?'luglio':'giugno'):'novembre'}</div>
+          </div>
+          <div class="dl-tot" style="color:${d.col}">${fmt(d.tot)}</div>
         </div>
-        <div class="dl-tot" style="color:${d.col}">${fmt(d.tot)}</div>
-      </div>
-      ${d.items.map(i=>`<div class="dl-item">
-        <div><div class="dl-lbl">${i.l}</div><div class="dl-note">${i.n}</div></div>
-        <div class="dl-val" style="color:${i.v>0?d.col:'var(--g)'}">${fmt(Math.abs(i.v))}</div>
-      </div>`).join('')}
-    </div>`;
-  }).join('')}
-  ${!uniq.length?`<div class="empty"><div class="empty-i">📅</div><div>Inserisci ricavi negli anni</div></div>`:''}
+        ${d.items.map(i=>`<div class="dl-item">
+          <div><div class="dl-lbl">${i.l}</div><div class="dl-note">${i.n}</div></div>
+          <div class="dl-val" style="color:${i.v>0?d.col:'var(--g)'}">${fmt(Math.abs(i.v))}</div>
+        </div>`).join('')}
+      </div>`;
+    }).join('')}
+    ${!uniq.length?`<div class="empty"><div class="empty-i">📅</div><div>Inserisci ricavi negli anni</div></div>`:''}
   </div>`;
 }
 
 // ── AI ────────────────────────────────────────────────────────────────────────
 function buildAI(){
-  const ctx=Object.keys(S.years).map(Number).sort((a,b)=>a-b).map(y=>{
-    const yd=S.years[y];const ri=getRicavi(yd);
-    const t=calcT(ri,yd.aliq||15,getInpsDed(y));
-    const sI=t.imp-(yd.accI||0),sN=t.inps-(yd.accN||0);
-    let extra='';
-    if(y>=2026&&yd.monthly){
-      const totS=yd.monthly.reduce((s,m)=>s+(m.studio||0),0);
-      const totR=yd.monthly.reduce((s,m)=>s+(m.rb||0),0);
-      const totA=yd.monthly.reduce((s,m)=>s+(m.altro||0),0);
-      extra=` | Studio SDI: ${fmtD(totS)} | RoseBerry: ${fmtD(totR)} | Altro: ${fmtD(totA)}`;
-    }
-    return`ANNO ${y}: Ricavi ${fmtD(ri)} | INPSdovuta ${fmtD(t.inps)} | INPSdeducibile ${fmtD(t.inpsDed)} | Imposta ${yd.aliq||15}% = ${fmtD(t.imp)} | AccI ${fmtD(yd.accI||0)} | AccN ${fmtD(yd.accN||0)} | SaldoImp ${fmtD(sI)} | SaldoINPS ${fmtD(sN)}${extra}`;
-  }).join('\n');
   return`<div class="fu">
-  <div class="card" style="margin-bottom:14px">
-    <div class="ctitle">🔑 Chiave API Anthropic</div>
-    <div class="apikey-wrap">
-      <input class="apikey-input" type="${showKey?'text':'password'}" value="${S.apiKey||''}" placeholder="sk-ant-..." oninput="updAK(this.value)"/>
-      <button class="eye-btn" onclick="togKey()">${showKey?'🙈':'👁️'}</button>
-    </div>
-    <div style="font-size:10px;color:var(--mut)">
-      <a href="https://console.anthropic.com/settings/keys" target="_blank" style="color:var(--g)">console.anthropic.com</a>
-      &nbsp;·&nbsp; Salvata localmente &nbsp;·&nbsp; Pochi centesimi a conversazione
-    </div>
-  </div>
-  <div class="card">
-    <div class="ctitle">🤖 Consulente Fiscale AI</div>
-    <div style="font-size:10px;color:var(--mut);padding:8px 11px;border-radius:8px;background:var(--gd);border:1px solid var(--gb);margin-bottom:12px">
-      Conosce tutti i tuoi anni (${Object.keys(S.years).join(', ')}), acconti versati, saldi, e dal 2026 il dettaglio per fonte.
-    </div>
-    <div class="chat-wrap">
-      <div class="chat-msgs" id="cmsg">
-        ${msgs.map(m=>`<div class="cbbl ${m.r}">
-          ${m.r==='ai'?'<div class="ai-lbl">⚖️ CONSULENTE FISCALE AI</div>':''}${m.t}</div>`).join('')}
-        ${chatLoading?`<div class="chat-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>`:''}
+    <div class="card" style="margin-bottom:14px">
+      <div class="ctitle">🔑 Chiave API Anthropic</div>
+      <div class="apikey-wrap">
+        <input class="apikey-input" type="${showKey?'text':'password'}" value="${S.apiKey||''}" placeholder="sk-ant-..." oninput="updAK(this.value)"/>
+        <button class="eye-btn" onclick="togKey()">${showKey?'🙈':'👁️'}</button>
       </div>
-      ${msgs.length===1?`<div class="csug">
-        ${['Quanto pago a giugno prossimo?','Confronta 2024 vs 2025','Conviene il metodo previsionale?','Cosa succede se RoseBerry supera €10.000?','Come riduco gli acconti?'].map(s=>
-          `<button class="csug-btn" onclick="setSug('${s}')">${s}</button>`).join('')}
-      </div>`:''}
-      <div class="chat-irow">
-        <input class="chat-in" id="cin" placeholder="Chiedi al consulente..." onkeydown="if(event.key==='Enter')sendChat()"/>
-        <button class="chat-send" id="csend" onclick="sendChat()" ${chatLoading?'disabled':''}>→</button>
+      <div style="font-size:10px;color:var(--mut)">
+        <a href="https://console.anthropic.com/settings/keys" target="_blank" style="color:var(--g)">console.anthropic.com</a>
+        &nbsp;·&nbsp; Salvata localmente &nbsp;·&nbsp; Usata anche per 📷 F24 Auto-Extract
       </div>
     </div>
-  </div></div>`;
+    <div class="card">
+      <div class="ctitle">🤖 Consulente Fiscale AI</div>
+      <div style="font-size:10px;color:var(--mut);padding:8px 11px;border-radius:8px;background:var(--gd);border:1px solid var(--gb);margin-bottom:12px">
+        Conosce tutti i tuoi anni (${Object.keys(S.years).join(', ')}), acconti versati, saldi, e dal 2026 il dettaglio per fonte.
+      </div>
+      <div class="chat-wrap">
+        <div class="chat-msgs" id="cmsg">
+          ${msgs.map(m=>`<div class="cbbl ${m.r}">
+            ${m.r==='ai'?'<div class="ai-lbl">⚖️ CONSULENTE FISCALE AI</div>':''}
+            ${m.t}</div>`).join('')}
+          ${chatLoading?`<div class="chat-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>`:''}
+        </div>
+        ${msgs.length===1?`<div class="csug">
+          ${['Quanto pago a giugno prossimo?','Confronta 2024 vs 2025','Conviene il metodo previsionale?','Cosa succede se RoseBerry supera €10.000?','Come riduco gli acconti?'].map(s=>
+            `<button class="csug-btn" onclick="setSug('${s}')">${s}</button>`).join('')}
+        </div>`:''}
+        <div class="chat-irow">
+          <input class="chat-in" id="cin" placeholder="Chiedi al consulente..." onkeydown="if(event.key==='Enter')sendChat()"/>
+          <button class="chat-send" id="csend" onclick="sendChat()" ${chatLoading?'disabled':''}>→</button>
+        </div>
+      </div>
+    </div></div>`;
 }
 
 // ── EVENTI ────────────────────────────────────────────────────────────────────
 function bindEv(){const c=document.getElementById('cmsg');if(c)c.scrollTop=c.scrollHeight;}
 function setY(y){curY=y;curT='dati';R();}
 function setT(t){
-  if(['storico','scadenze','ai'].includes(t)) curY=Math.max(...Object.keys(S.years).map(Number));
-  // auto-switch mensile for 2026+
+  if(['storico','scadenze','ai','f24'].includes(t)) curY=Math.max(...Object.keys(S.years).map(Number));
   if(t==='mensile'&&parseInt(curY)<2026) return;
   curT=t;R();
 }
@@ -881,7 +1092,6 @@ function addY(){
   const yrs=Object.keys(S.years).map(Number);
   const newY=Math.max(...yrs)+1;
   S.years[newY]={ricavi:0,aliq:15,accI:0,accN:0,inpsEff:0,note:'',monthly:newY>=2026?emptyMonthly():null};
-  // Auto-crea anno successivo (vuoto) per la catena acconti
   const nextY=newY+1;
   if(!S.years[nextY]){
     S.years[nextY]={ricavi:0,aliq:15,accI:0,accN:0,inpsEff:0,note:'Creato automaticamente — da compilare.',monthly:nextY>=2026?emptyMonthly():null};
@@ -895,17 +1105,13 @@ function delY(e,y){
   const yrs=Object.keys(S.years).map(Number);
   curY=yrs.length?Math.max(...yrs):null;R();
 }
-
 function exportData(){
   const blob=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});
   const url=URL.createObjectURL(blob);
   const a=document.createElement('a');
-  a.href=url;
-  a.download=`commercialista_backup_${new Date().toISOString().slice(0,10)}.json`;
-  a.click();
-  URL.revokeObjectURL(url);
+  a.href=url; a.download=`commercialista_backup_${new Date().toISOString().slice(0,10)}.json`;
+  a.click(); URL.revokeObjectURL(url);
 }
-
 function importData(e){
   const file=e.target.files[0];
   if(!file) return;
@@ -915,9 +1121,7 @@ function importData(e){
       const data=JSON.parse(ev.target.result);
       if(!data.years||typeof data.years!=='object'){alert('File non valido: manca la sezione "years".');return;}
       if(!confirm(`Importare dati con anni: ${Object.keys(data.years).join(', ')}?\nI dati attuali verranno sostituiti.`)) return;
-      // Migra monthly per anni >=2026
       Object.keys(data.years).forEach(y=>{if(parseInt(y)>=2026&&!data.years[y].monthly)data.years[y].monthly=emptyMonthly();});
-      // Auto-crea anno successivo se manca
       const maxY=Math.max(...Object.keys(data.years).map(Number));
       if(!data.years[maxY+1]) data.years[maxY+1]={ricavi:0,aliq:15,accI:0,accN:0,inpsEff:0,note:'Creato automaticamente.',monthly:(maxY+1)>=2026?emptyMonthly():null};
       S=data;save();
@@ -927,21 +1131,20 @@ function importData(e){
     }catch(err){alert('Errore nel file: '+err.message);}
   };
   reader.readAsText(file);
-  e.target.value=''; // reset per permettere reimport stesso file
+  e.target.value='';
 }
 
 async function sendChat(){
   const inp=document.getElementById('cin');
   const txt=inp?.value?.trim();
   if(!txt||chatLoading) return;
-  if(!S.apiKey || !S.apiKey.trim()){
+  if(!S.apiKey||!S.apiKey.trim()){
     msgs.push({r:'ai',t:'⚠️ Inserisci la chiave API Anthropic per usare il consulente.'});
     R();return;
   }
   inp.value='';
   msgs.push({r:'user',t:txt});
   chatLoading=true;R();
-
   const ctx=Object.keys(S.years).map(Number).sort((a,b)=>a-b).map(y=>{
     const yd=S.years[y];const ri=getRicavi(yd);
     const t=calcT(ri,yd.aliq||15,getInpsDed(y));
@@ -954,17 +1157,11 @@ async function sendChat(){
     }
     return`ANNO ${y}: Ricavi ${fmtD(ri)} | INPSdovuta ${fmtD(t.inps)} | INPSdeducibile ${fmtD(t.inpsDed)} | Imposta ${fmtD(t.imp)} | Saldo: ${fmtD(sI+sN)}${extra}`;
   }).join('\n');
-
-  const sys=`Sei un commercialista italiano esperto in regime forfettario. Rispondi SEMPRE in italiano, diretto e preciso.
-CLIENTE: Nicholas Rossetti — Osteopata, ATECO 86.90.29, Forfettario, INPS Gest.Sep. 26,07%, Coeff. 78%.
-DATI FISCALI:\n${ctx}
-REGOLE: Base imponibile = ricavi×78% − INPS effettivamente versata nell'anno. Acconto 40% giu + 60% nov (metodo storico). INPS 50%+50%. Saldo = tasse reali - acconti versati. Limite 85k€. Nessuna IVA.
-Rispondi: 1) Risposta diretta 2) Importo preciso 3) Cosa fare. Conciso.`;
-
+  const sys=`Sei un commercialista italiano esperto in regime forfettario. Rispondi SEMPRE in italiano, diretto e preciso. CLIENTE: Nicholas Rossetti — Osteopata, ATECO 86.90.29, Forfettario, INPS Gest.Sep. 26,07%, Coeff. 78%. DATI FISCALI:\n${ctx} REGOLE: Base imponibile = ricavi×78% − INPS effettivamente versata nell'anno. Acconto 40% giu + 60% nov (metodo storico). INPS 50%+50%. Saldo = tasse reali - acconti versati. Limite 85k€. Nessuna IVA. Rispondi: 1) Risposta diretta 2) Importo preciso 3) Cosa fare. Conciso.`;
   try{
     const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',
       headers:{'Content-Type':'application/json','x-api-key':S.apiKey,
-        'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
       body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:900,system:sys,
         messages:msgs.filter((_,i)=>i>0).map(m=>({role:m.r==='ai'?'assistant':'user',content:m.t}))})});
     const d=await res.json();
