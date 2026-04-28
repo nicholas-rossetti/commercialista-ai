@@ -505,9 +505,13 @@ function buildF24(){
 }
 function isInpsCode(cod){
   const c=String(cod).trim().toUpperCase();
-  if(/^(0[0-9]{3}|[2][0-9]{3})$/i.test(c)) return true;
+  if(c==='8700'||c.startsWith('8700')) return true;
+  if(c==='DPPI'||c.startsWith('DPPI')) return true;
+  if(c==='PXX'||c.startsWith('PXX')) return true;
+  if(c==='PXXR'||c.startsWith('PXXR')) return true;
+  if(/^(0[0-9]{3}|[2][0-9]{3})$/.test(c)) return true;
   if(c.startsWith('INPS')) return true;
-  const inpsCodes=['0100','0200','0300','0400','0601','0609','2800','2500','2501','2503','2550','2560','P10','P12'];
+  const inpsCodes=['0100','0200','0300','0400','0601','0609','2800','2500','2501','2503','2550','2560','P10','P12','3501','RCLT'];
   return inpsCodes.includes(c);
 }
 
@@ -587,15 +591,7 @@ async function f24Extract(){
   const base64=f24State.imgData.split(',')[1];
   const mediaType=f24State.imgType||'image/png';
 
-  const prompt=`Leggi questo modello F24 italiano. Estrai SOLO un oggetto JSON valido (nessun testo extra, nessun markdown) con questa struttura esatta:
-{"codici":[{"codice":"1790","importo":374,"descrizione":"Acconto imposta sostitutiva"},...],"data":"YYYY-MM","errori":[]}
-
-Regole:
-- "codici": array di tutti i codici tributo presenti con importo numerico (non stringa) in euro
-- Includi TUTTI i codici visibili: 1790, 1791, e codici INPS (tipicamente 0100, 0200, 0300, 0400, 0601, 0609, 2800 ecc.)
-- "data": anno e mese di riferimento del pagamento (formato YYYY-MM, es. "2025-06")
-- "errori": array di stringhe per eventuali codici illeggibili
-- SOLO JSON valido, nessun altro testo`;
+  const prompt=`Leggi questo modello F24 italiano. IMPORTANTE:\n1) Per i numeri/importi: gli importi F24 sono in EUR con centesimi (es: "37400" = 374,00 EUR, non 37400 EUR). Leggi SOLO le cifre della colonna "Importi a debito versati" ignorando spazi e separatori. Se un importo sembra 10x o 100x piu grande degli altri, probabilmente hai incluso i centesimi come interi — correggilo.\n2) Classifica TUTTI i codici tributo cosi:\n   - Cod. 1790, 1791 = accI (acconti imposta sostitutiva)\n   - Cod. 8700 e TUTTE le varianti (8700 DPPI, 8700 PXX, 8700 PXXR, DPPI, PXX, PXXR, ecc.) = accN (acconti INPS)\n   - Cod. 3801, 4001, 1792, INAIL = ignora\nEstrai SOLO un oggetto JSON valido con questa struttura esatta:\n{"codici":[{"codice":"1790","importo":374,"descrizione":"Acconto imposta sostitutiva","tipo":"imposta"},...],"data":"YYYY-MM","errori":[]}\nNessun testo extra, SOLO il JSON. Il campo "tipo" deve essere: "imposta" per 1790/1791, "inps" per 8700/DPPI/PXX/PXXR, "altro" per tutto il resto.`;
 
   try{
     const res=await fetch('https://api.anthropic.com/v1/messages',{
