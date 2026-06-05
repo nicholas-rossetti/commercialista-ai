@@ -1212,7 +1212,7 @@ function buildScadenze(){
   // Ordina per anno+mese, poi per tipo (forfettario prima dentro stesso mese)
   all.sort((a,b)=>{
     const ka=a.y*100+a.m, kb=b.y*100+b.m;
-    if(ka!==kb) return ka-kb;
+    if(ka!==kb) return kb-ka;
     const ord={forfettario:0,'cedolare-acc':1,cedolare:2,imu:3};
     return (ord[a.tipo]||9)-(ord[b.tipo]||9);
   });
