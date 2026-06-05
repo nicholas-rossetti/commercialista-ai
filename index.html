@@ -276,12 +276,17 @@ const DEFAULTS={apiKey:'',proroga:false,years:{
   2025:{ricavi:12031,aliq:15,accI:554,accN:1722,inpsEff:0,note:'Ricavi \u20ac12.031 (96 fatture). Acconti da F24: imp \u20ac554 (giu 374+nov 180) \u00b7 INPS \u20ac1.722 (giu 1272+nov 450). INPS versata: auto-calcolata.',monthly:null},
   2026:{ricavi:0,aliq:15,accI:0,accN:0,inpsEff:0,note:'Compila mese per mese nel tab Mensile.',monthly:emptyMonthly()},
   2027:{ricavi:0,aliq:15,accI:0,accN:0,inpsEff:0,note:'Creato automaticamente per catena acconti.',monthly:emptyMonthly()}
+},
+affitto:{
+  2025:{canone:650,mesi:10,cedolare:1365,acconti:0,imuGiu:129,imuDic:129,note:'Contratto 27/02/2025-26/02/2026 \u00b7 Edil Europa Srl \u00b7 Cedolare 21% \u00b7 10 mesi (mar-dic) \u00b7 IMU Golasecca aliq.10,60\u2030'},
+  2026:{canone:650,mesi:12,cedolare:1638,acconti:0,imuGiu:129,imuDic:129,note:'Contratto 27/02/2026-26/02/2027 \u00b7 Edil Europa Srl \u00b7 Cedolare 21% \u00b7 12 mesi'}
 }};
 function load(){try{const r=localStorage.getItem(STORE);if(r){const d=JSON.parse(r);
   Object.keys(d.years).forEach(y=>{
     if(parseInt(y)>=2026&&!d.years[y].monthly)d.years[y].monthly=emptyMonthly();
     if(d.years[y].inpsEff===undefined)d.years[y].inpsEff=0;
   });
+  if(!d.affitto) d.affitto=JSON.parse(JSON.stringify(DEFAULTS.affitto));
   return d;}}catch(e){}return JSON.parse(JSON.stringify(DEFAULTS));}
 function save(){try{localStorage.setItem(STORE,JSON.stringify(S));}catch(e){}}
 let S=load();
@@ -304,7 +309,7 @@ function buildApp(){
   const sN=t?t.inps-(yr.accN||0):0;
   const saldo=sI+sN;
   const hcol=saldo>50?'var(--r)':saldo<-50?'var(--g)':'var(--a)';
-  const isGlob=curT==='storico'||curT==='scadenze'||curT==='ai'||curT==='f24';
+  const isGlob=curT==='storico'||curT==='scadenze'||curT==='ai'||curT==='f24'||curT==='affitto';
   return`<div class="sb">
   <div class="sb-head"><div class="logo">
     <div class="logo-icon">\u2696\uFE0F</div>
@@ -330,6 +335,7 @@ function buildApp(){
     <button class="nav-btn${curT==='scadenze'?' on':''}" onclick="setT('scadenze')">\uD83D\uDCC5 Scadenziario</button>
     <button class="nav-btn${curT==='ai'?' on':''}" onclick="setT('ai')">\uD83E\uDD16 Consulente AI</button>
     <button class="nav-btn${curT==='f24'?' on':''}" onclick="setT('f24')">\uD83D\uDCF7 F24 Auto-Extract</button>
+    <button class="nav-btn${curT==='affitto'?' on':''}" onclick="setT('affitto')">&#127968; Affitto &amp; IMU</button>
     <div style="border-top:1px solid rgba(52,211,153,.07);margin-top:6px;padding-top:6px">
       <button class="nav-btn" onclick="exportData()" style="font-size:10px">\uD83D\uDCBE Esporta dati</button>
       <button class="nav-btn" onclick="document.getElementById('imp-file').click()" style="font-size:10px">\uD83D\uDCC2 Importa dati</button>
@@ -342,7 +348,7 @@ function buildApp(){
     <div class="mh-top">
       <div>
         <div class="mh-lbl">Anno fiscale</div>
-        <div class="mh-year">${isGlob?(curT==='storico'?'Storico':curT==='scadenze'?'Scadenziario':curT==='f24'?'F24 OCR':'Consulente AI'):curY}</div>
+        <div class="mh-year">${isGlob?(curT==='storico'?'Storico':curT==='scadenze'?'Scadenziario':curT==='f24'?'F24 OCR':curT==='affitto'?'Affitto & IMU':'Consulente AI'):curY}</div>
       </div>
       <div class="mh-mid">
         <div class="mh-lbl">ATECO 86.90.29 \u00b7 Coeff. 78% \u00b7 INPS 26,07%</div>
@@ -373,6 +379,7 @@ function buildContent(){
   if(curT==='scadenze') return buildScadenze();
   if(curT==='ai') return buildAI();
   if(curT==='f24') return buildF24();
+  if(curT==='affitto') return buildAffitto();
   const yr=S.years[curY];
   if(!yr) return '<div class="empty"><div class="empty-i">\uD83D\uDCC2</div><div>Seleziona un anno</div></div>';
   if(curT==='dati') return buildDati(yr);
@@ -445,7 +452,7 @@ function buildF24(){
       </div>
       ${st.applied?`<div class="al i" style="margin-top:10px">\u2705 Dati aggiunti per anno ${st.appliedYear}!</div>`:''}
       <button class="f24-apply-btn" onclick="applyF24(${totI},${totN})">
-        \uD83D\uDCBE Applica \u2192 accI +${fmt(totI)} \u00b7 accN +${fmt(totN)} all'anno ${selYear}
+        \uD83D\uDCBE Imposta \u2192 accI = ${fmt(totI)} \u00b7 accN = ${fmt(totN)} anno ${selYear}
       </button>
     </div>`;
   }
@@ -603,7 +610,7 @@ async function f24Extract(){
         'anthropic-dangerous-direct-browser-access':'true'
       },
       body:JSON.stringify({
-        model:'claude-haiku-4-5',
+        model:'claude-haiku-4-5-20251001',
         max_tokens:1024,
         messages:[{
           role:'user',
@@ -656,8 +663,11 @@ async function f24Extract(){
 function applyF24(totI,totN){
   const year=f24State.selectedYear||Math.max(...Object.keys(S.years).map(Number));
   if(!S.years[year]){f24State.error='Anno '+year+' non trovato.';R();return;}
-  S.years[year].accI=(S.years[year].accI||0)+totI;
-  S.years[year].accN=(S.years[year].accN||0)+totN;
+  const curI=S.years[year].accI||0;
+  const curN=S.years[year].accN||0;
+  if((curI>0||curN>0)&&!confirm(`⚠️ Anno ${year}: accI già €${curI}, accN già €${curN}.\n\nVuoi SOSTITUIRE con i valori del F24?\n• accI → €${totI}\n• accN → €${totN}\n\n"Annulla" per non fare nulla.`)){return;}
+  S.years[year].accI=totI;
+  S.years[year].accN=totN;
   save();
   f24State.applied=true;f24State.appliedYear=year;
   R();
@@ -921,6 +931,122 @@ function buildMensile(yr){
     </div></div>
   </div></div>`;
 }
+// ── AFFITTO & IMU ────────────────────────────────────────────────────────────
+function buildAffitto(){
+  if(!S.affitto){S.affitto=JSON.parse(JSON.stringify(DEFAULTS.affitto));}
+  [2025,2026].forEach(y=>{if(!S.affitto[y])S.affitto[y]={canone:650,mesi:y===2025?10:12,cedolare:y===2025?1365:1638,acconti:0,imuGiu:129,imuDic:129,note:''};});
+  const allYrs=Object.keys(S.affitto).map(Number).sort((a,b)=>a-b);
+  return`<div class="fu">
+    <div class="al i" style="font-size:11px">&#127968; <strong>Immobile:</strong> Via G. Mazzini 5, Golasecca (VA) \u00b7 Cat. A/3 \u00b7 Rendita catastale \u20ac144,61<br/>
+    <strong>Conduttore:</strong> Edil Europa S.r.l. \u00b7 <strong>Canone:</strong> \u20ac650/mese \u00b7 <strong>Regime:</strong> Cedolare secca 21% \u00b7 <strong>IMU:</strong> Golasecca E079, aliq. 10,60\u2030</div>
+    ${allYrs.map(y=>{
+      const a=S.affitto[y];
+      const ced=a.cedolare||Math.round((a.canone||650)*(a.mesi||12)*0.21);
+      const canoneAnnuo=(a.canone||650)*(a.mesi||12);
+      const cedAuto=Math.round(canoneAnnuo*0.21);
+      const accGiu=Math.round(ced*0.40);
+      const accNov=Math.round(ced*0.60);
+      const saldoCed=Math.max(0,ced-(a.acconti||0));
+      const imuTot=(a.imuGiu||0)+(a.imuDic||0);
+      const totAnno=ced+imuTot;
+      return`<div class="card" style="margin-bottom:14px">
+        <div class="ctitle">&#127968; Anno ${y}</div>
+        <div class="g2">
+          <div>
+            <div style="font-size:9px;color:var(--b);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px">Cedolare Secca Affitto</div>
+            <div class="fld">
+              <label class="flbl">Canone mensile (\u20ac)</label>
+              <div class="iw"><div class="ipfx">\u20AC</div>
+              <input type="number" value="${a.canone||650}" onchange="updAffitto(${y},'canone',this.value)"/></div>
+            </div>
+            <div class="fld">
+              <label class="flbl">Mesi percepiti</label>
+              <div class="iw"><div class="ipfx">#</div>
+              <input type="number" min="1" max="12" value="${a.mesi||12}" onchange="updAffitto(${y},'mesi',this.value)"/></div>
+              <div class="fnote">${y===2025?'10 mesi (mar\u2013dic 2025) \u00b7 primo contratto dal 01/03/2025':y===2026?'12 mesi \u00b7 contratto 27/02/2026\u219226/02/2027':'Mesi effettivi di locazione'}</div>
+            </div>
+            <div class="fld">
+              <label class="flbl">Imposta cedolare secca (21%)</label>
+              <div class="iw" style="border-color:rgba(96,165,250,.4)"><div class="ipfx" style="color:var(--b)">\u20AC</div>
+              <input type="number" value="${ced}" onchange="updAffitto(${y},'cedolare',this.value)"/></div>
+              <div class="fnote">Auto-calcolato: \u20ac${cedAuto} \u00b7 modifica se il commercialista indica diversamente</div>
+            </div>
+            <div class="fld">
+              <label class="flbl">Acconti cedolare versati (\u20ac)</label>
+              <div class="iw"><div class="ipfx">\u20AC</div>
+              <input type="number" value="${a.acconti||0}" onchange="updAffitto(${y},'acconti',this.value)"/></div>
+              <div class="fnote">Totale gi\u00e0 versato nell'anno ${y}</div>
+            </div>
+            <div style="padding:10px 14px;border-radius:9px;background:rgba(248,113,113,.07);border:1px solid rgba(248,113,113,.2);margin-top:4px">
+              <div style="font-size:9px;color:var(--r);font-weight:700;margin-bottom:4px">SALDO CEDOLARE ${y}</div>
+              <div style="font-size:20px;font-weight:900;color:${saldoCed>0?'var(--r)':'var(--g)'};font-family:var(--mono)">${fmt(saldoCed)}</div>
+              <div style="font-size:9px;color:var(--mut);margin-top:3px">${saldoCed>0?'da pagare in dichiarazione':'gi\u00e0 coperto'}</div>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:9px;color:var(--a);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px">IMU \u00b7 Comune Golasecca (E079)</div>
+            <div class="fld">
+              <label class="flbl">IMU \u2014 Acconto giugno (\u20ac)</label>
+              <div class="iw" style="border-color:rgba(245,158,11,.4)"><div class="ipfx" style="color:var(--a)">\u20AC</div>
+              <input type="number" value="${a.imuGiu||0}" onchange="updAffitto(${y},'imuGiu',this.value)"/></div>
+              <div class="fnote">Cod. 3918 \u00b7 Scadenza 16 giugno</div>
+            </div>
+            <div class="fld">
+              <label class="flbl">IMU \u2014 Saldo dicembre (\u20ac)</label>
+              <div class="iw" style="border-color:rgba(245,158,11,.4)"><div class="ipfx" style="color:var(--a)">\u20AC</div>
+              <input type="number" value="${a.imuDic||0}" onchange="updAffitto(${y},'imuDic',this.value)"/></div>
+              <div class="fnote">Cod. 3918 \u00b7 Scadenza 16 dicembre</div>
+            </div>
+            <div style="padding:10px 14px;border-radius:9px;background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.2);margin-top:4px">
+              <div style="font-size:9px;color:var(--a);font-weight:700;margin-bottom:3px">IMU TOTALE ${y}</div>
+              <div style="font-size:18px;font-weight:900;color:var(--a);font-family:var(--mono)">${fmt(imuTot)}</div>
+            </div>
+            <div style="margin-top:12px;padding:10px 14px;border-radius:9px;background:var(--bg3);border:1px solid rgba(52,211,153,.08)">
+              <div style="font-size:9px;color:var(--mut);font-weight:700;margin-bottom:6px">ACCONTI CEDOLARE ${y+1} (metodo storico)</div>
+              <div style="display:flex;gap:14px">
+                <div><div style="font-size:9px;color:var(--mut)">Giugno ${y+1} (40%)</div><div style="font-size:15px;font-weight:900;color:var(--r);font-family:var(--mono)">${fmt(accGiu)}</div></div>
+                <div><div style="font-size:9px;color:var(--mut)">Novembre ${y+1} (60%)</div><div style="font-size:15px;font-weight:900;color:var(--a);font-family:var(--mono)">${fmt(accNov)}</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:12px">
+          <div style="padding:10px 14px;border-radius:9px;background:rgba(96,165,250,.07);border:1px solid rgba(96,165,250,.2)">
+            <div style="font-size:9px;color:var(--b);font-weight:700;margin-bottom:3px">CEDOLARE ${y}</div>
+            <div style="font-size:18px;font-weight:900;color:var(--b);font-family:var(--mono)">${fmt(ced)}</div>
+          </div>
+          <div style="padding:10px 14px;border-radius:9px;background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.2)">
+            <div style="font-size:9px;color:var(--a);font-weight:700;margin-bottom:3px">IMU ${y}</div>
+            <div style="font-size:18px;font-weight:900;color:var(--a);font-family:var(--mono)">${fmt(imuTot)}</div>
+          </div>
+          <div style="padding:10px 14px;border-radius:9px;background:rgba(52,211,153,.07);border:1px solid var(--gb)">
+            <div style="font-size:9px;color:var(--g);font-weight:700;margin-bottom:3px">TOTALE USCITE ${y}</div>
+            <div style="font-size:18px;font-weight:900;color:var(--g);font-family:var(--mono)">${fmt(totAnno)}</div>
+          </div>
+        </div>
+        <div class="fld" style="margin-top:12px">
+          <label class="flbl">Note</label>
+          <div class="iw"><textarea onchange="updAffitto(${y},'note',this.value)" placeholder="Promemoria...">${a.note||''}</textarea></div>
+        </div>
+      </div>`;
+    }).join('')}
+    <button class="add-btn" onclick="addAffittoYear()" style="width:100%">\uFF0B Aggiungi anno affitto</button>
+  </div>`;
+}
+function updAffitto(y,f,v){
+  if(!S.affitto) S.affitto={};
+  if(!S.affitto[y]) S.affitto[y]={canone:650,mesi:12,cedolare:0,acconti:0,imuGiu:0,imuDic:0,note:''};
+  S.affitto[y][f]=f==='note'?v:Number(v);
+  if(f==='canone'||f==='mesi') S.affitto[y].cedolare=Math.round(S.affitto[y].canone*S.affitto[y].mesi*0.21);
+  save();R();
+}
+function addAffittoYear(){
+  if(!S.affitto) S.affitto={};
+  const yrs=Object.keys(S.affitto).map(Number);
+  const newY=yrs.length?Math.max(...yrs)+1:new Date().getFullYear();
+  S.affitto[newY]={canone:650,mesi:12,cedolare:Math.round(650*12*0.21),acconti:0,imuGiu:129,imuDic:129,note:''};
+  save();R();
+}
 // ── STORICO ───────────────────────────────────────────────────────────────────
 function buildStorico(){
   const yrs=Object.keys(S.years).map(Number).sort((a,b)=>a-b);
@@ -979,55 +1105,171 @@ function buildStorico(){
     </div></div>`;
 }
 
-// ── SCADENZIARIO ──────────────────────────────────────────────────────────────
+// ── SCADENZIARIO UNIFICATO ──────────────────────────────────────────────────
 function buildScadenze(){
+  const now=new Date();
+  const nowK=now.getFullYear()*100+now.getMonth()+1;
+  const all=[];
+
+  // ── FORFETTARIO (imposta sostitutiva + INPS) ──
   const yrs=Object.keys(S.years).map(Number).sort((a,b)=>a-b);
-  const deadlines=[];
   yrs.forEach(y=>{
     const yd=S.years[y];const ri=getRicavi(yd);if(!ri) return;
     const t=calcT(ri,yd.aliq||15,getInpsDed(y));
     const sI=t.imp-(yd.accI||0),sN=t.inps-(yd.accN||0);
-    const a1i=t.imp*.4,a1n=t.inps*.5,a2i=t.imp*.6,a2n=t.inps*.5;
+    const a1i=Math.round(t.imp*.4),a1n=Math.round(t.inps*.5);
+    const a2i=Math.round(t.imp*.6),a2n=Math.round(t.inps*.5);
     const pm=S.proroga?1.004:1;
-    deadlines.push({
-      date:`${S.proroga?'Luglio':'Giugno'} ${y+1}`,y:y+1,m:S.proroga?7:6,
-      items:[{l:`Saldo imposta ${y}`,v:sI,n:'Cod. 1791'},{l:`Saldo INPS ${y}`,v:sN,n:''},{l:`1\u00b0 acc. imposta ${y+1} (40%)`,v:a1i,n:'Cod. 1790'},{l:`1\u00b0 acc. INPS ${y+1} (50%)`,v:a1n,n:''}],
-      tot:(sI+sN+a1i+a1n)*pm,col:'var(--r)',bg:'rgba(248,113,113,.06)',bd:'rgba(248,113,113,.22)'
+    const mGiu=S.proroga?7:6;
+    const totGiu=Math.round((sI+sN+a1i+a1n)*pm);
+    const totNov=a2i+a2n;
+    if(totGiu>0) all.push({
+      y:y+1,m:mGiu,
+      date:`${S.proroga?'Luglio':'Giugno'} ${y+1}`,
+      tipo:'forfettario',
+      col:'var(--r)',bg:'rgba(248,113,113,.06)',bd:'rgba(248,113,113,.22)',
+      tot:totGiu,
+      items:[
+        {l:`Saldo imp. sostitutiva ${y}`,v:sI,n:'Cod. 1791'},
+        {l:`Saldo INPS ${y}`,v:sN,n:'Gest. Separata'},
+        {l:`1° acc. imposta ${y+1} (40%)`,v:a1i,n:'Cod. 1790'},
+        {l:`1° acc. INPS ${y+1} (50%)`,v:a1n,n:''}
+      ].filter(i=>Math.abs(i.v)>0)
     });
-    deadlines.push({
-      date:`Novembre ${y+1}`,y:y+1,m:11,
-      items:[{l:`2\u00b0 acc. imposta ${y+1} (60%)`,v:a2i,n:'Cod. 1790'},{l:`2\u00b0 acc. INPS ${y+1} (50%)`,v:a2n,n:''}],
-      tot:a2i+a2n,col:'var(--a)',bg:'rgba(245,158,11,.06)',bd:'rgba(245,158,11,.2)'
+    if(totNov>0) all.push({
+      y:y+1,m:11,
+      date:`Novembre ${y+1}`,
+      tipo:'forfettario',
+      col:'var(--a)',bg:'rgba(245,158,11,.06)',bd:'rgba(245,158,11,.2)',
+      tot:totNov,
+      items:[
+        {l:`2° acc. imposta ${y+1} (60%)`,v:a2i,n:'Cod. 1790'},
+        {l:`2° acc. INPS ${y+1} (50%)`,v:a2n,n:''}
+      ]
     });
   });
-  const seen=new Set();
-  const uniq=deadlines.filter(d=>{const k=`${d.y}-${d.m}`;if(seen.has(k))return false;seen.add(k);return true;})
-    .sort((a,b)=>a.y*100+a.m-(b.y*100+b.m));
-  const now=new Date();const nowK=now.getFullYear()*100+now.getMonth()+1;
+
+  // ── CEDOLARE SECCA AFFITTO ──
+  if(S.affitto){
+    Object.keys(S.affitto).map(Number).sort((a,b)=>a-b).forEach(y=>{
+      const a=S.affitto[y];
+      const ced=a.cedolare||Math.round((a.canone||650)*(a.mesi||12)*0.21);
+      if(!ced) return;
+      const acc1=Math.round(ced*0.40);
+      const acc2=Math.round(ced*0.60);
+      const saldo=Math.max(0,ced-(a.acconti||0));
+      // Saldo cedolare anno y → giugno y+1 (nella dichiarazione dei redditi)
+      if(saldo>0) all.push({
+        y:y+1,m:6,
+        date:`Giugno ${y+1}`,
+        tipo:'cedolare',
+        col:'var(--b)',bg:'rgba(96,165,250,.06)',bd:'rgba(96,165,250,.2)',
+        tot:saldo,
+        items:[{l:`Saldo cedolare secca ${y}`,v:saldo,n:'730/UNICO · 21% su €'+(a.canone||650)+'×'+(a.mesi||12)+'mesi'}]
+      });
+      // Acconti cedolare anno y+1 → giugno y+1 (40%) e novembre y+1 (60%)
+      if(acc1>0) all.push({
+        y:y+1,m:6,
+        date:`Giugno ${y+1}`,
+        tipo:'cedolare-acc',
+        col:'var(--b)',bg:'rgba(96,165,250,.04)',bd:'rgba(96,165,250,.15)',
+        tot:acc1,
+        items:[{l:`1° acc. cedolare ${y+1} (40%)`,v:acc1,n:'Cod. 1840 · su cedolare ${y}'}]
+      });
+      if(acc2>0) all.push({
+        y:y+1,m:11,
+        date:`Novembre ${y+1}`,
+        tipo:'cedolare-acc',
+        col:'var(--b)',bg:'rgba(96,165,250,.04)',bd:'rgba(96,165,250,.15)',
+        tot:acc2,
+        items:[{l:`2° acc. cedolare ${y+1} (60%)`,v:acc2,n:'Cod. 1840 · su cedolare ${y}'}]
+      });
+    });
+  }
+
+  // ── IMU ──
+  if(S.affitto){
+    Object.keys(S.affitto).map(Number).sort((a,b)=>a-b).forEach(y=>{
+      const a=S.affitto[y];
+      if((a.imuGiu||0)>0) all.push({
+        y,m:6,
+        date:`Giugno ${y}`,
+        tipo:'imu',
+        col:'var(--a)',bg:'rgba(245,158,11,.05)',bd:'rgba(245,158,11,.18)',
+        tot:a.imuGiu,
+        items:[{l:`IMU acconto ${y}`,v:a.imuGiu,n:'Cod. 3918 · Golasecca E079 · scad. 16/06'}]
+      });
+      if((a.imuDic||0)>0) all.push({
+        y,m:12,
+        date:`Dicembre ${y}`,
+        tipo:'imu',
+        col:'var(--a)',bg:'rgba(245,158,11,.05)',bd:'rgba(245,158,11,.18)',
+        tot:a.imuDic,
+        items:[{l:`IMU saldo ${y}`,v:a.imuDic,n:'Cod. 3918 · Golasecca E079 · scad. 16/12'}]
+      });
+    });
+  }
+
+  // Ordina per anno+mese, poi per tipo (forfettario prima dentro stesso mese)
+  all.sort((a,b)=>{
+    const ka=a.y*100+a.m, kb=b.y*100+b.m;
+    if(ka!==kb) return ka-kb;
+    const ord={forfettario:0,'cedolare-acc':1,cedolare:2,imu:3};
+    return (ord[a.tipo]||9)-(ord[b.tipo]||9);
+  });
+
+  // Raggruppa per anno+mese: un blocco per scadenza, con sezioni colorate interne
+  const grouped=[];
+  all.forEach(d=>{
+    const k=`${d.y}-${d.m}`;
+    let g=grouped.find(x=>x.k===k);
+    if(!g){g={k,y:d.y,m:d.m,date:d.date,sezioni:[],totale:0};grouped.push(g);}
+    g.sezioni.push(d);
+    g.totale+=d.tot;
+  });
+
+  const TIPO_BADGE={
+    forfettario:'🟢 Forfettario',
+    'cedolare-acc':'🔵 Cedolare acc.',
+    cedolare:'🔵 Cedolare saldo',
+    imu:'🟡 IMU'
+  };
+
   return`<div class="fu">
     <div class="proroga-toggle" style="margin-bottom:14px">
       <input type="checkbox" class="proroga-check" id="prt2" ${S.proroga?'checked':''} onchange="toggleProroga(this.checked)"/>
       <label for="prt2" style="font-size:11px;color:var(--sub);cursor:pointer">
-        Usa <strong>proroga luglio</strong> (+0,4% interessi) invece di giugno
+        Usa <strong>proroga luglio</strong> (+0,4%) per forfettario invece di giugno
       </label>
     </div>
-    ${uniq.map(d=>{
-      const past=d.y*100+d.m<nowK;
-      return`<div class="dl-card" style="background:${d.bg};border:1px solid ${d.bd};${past?'opacity:.45':''}">
-        <div class="dl-head">
+    ${!grouped.length?`<div class="empty"><div class="empty-i">📅</div><div>Inserisci ricavi negli anni</div></div>`:''}
+    ${grouped.map(g=>{
+      const past=g.y*100+g.m<nowK;
+      const isCurrent=g.y===now.getFullYear()&&g.m===now.getMonth()+1;
+      const borderMain=isCurrent?'2px solid var(--g)':'1px solid rgba(52,211,153,.12)';
+      return`<div class="dl-card" style="background:var(--bg3);border:${borderMain};${past?'opacity:.45':''}margin-bottom:12px">
+        <div class="dl-head" style="margin-bottom:8px">
           <div>
-            <div class="dl-date" style="color:${d.col}">${d.date}${past?' <span style="font-size:9px;color:var(--mut)">passato</span>':''}</div>
-            <div style="font-size:10px;color:var(--mut)">Scadenza 30 ${d.m===6||d.m===7?(d.m===7?'luglio':'giugno'):'novembre'}</div>
+            <div class="dl-date" style="color:${past?'var(--mut)':'#f1f5f9'};font-size:1rem">
+              📅 ${g.date}${past?' <span style="font-size:9px;color:var(--mut)">· passato</span>':''}${isCurrent?' <span style="font-size:9px;color:var(--g)">· QUESTO MESE</span>':''}
+            </div>
+            <div style="font-size:10px;color:var(--mut);margin-top:2px">${g.sezioni.map(s=>TIPO_BADGE[s.tipo]).join(' · ')}</div>
           </div>
-          <div class="dl-tot" style="color:${d.col}">${fmt(d.tot)}</div>
+          <div>
+            <div style="font-size:9px;color:var(--mut);text-align:right">TOTALE</div>
+            <div class="dl-tot" style="color:${past?'var(--mut)':'#f1f5f9'}">${fmt(g.totale)}</div>
+          </div>
         </div>
-        ${d.items.map(i=>`<div class="dl-item">
-          <div><div class="dl-lbl">${i.l}</div><div class="dl-note">${i.n}</div></div>
-          <div class="dl-val" style="color:${i.v>0?d.col:'var(--g)'}">${fmt(Math.abs(i.v))}</div>
-        </div>`).join('')}
+        ${g.sezioni.map(s=>`
+          <div style="background:${s.bg};border:1px solid ${s.bd};border-radius:8px;padding:10px 12px;margin-bottom:6px">
+            <div style="font-size:9px;color:${s.col};font-weight:700;letter-spacing:.8px;margin-bottom:6px">${TIPO_BADGE[s.tipo].toUpperCase()} · ${fmt(s.tot)}</div>
+            ${s.items.map(i=>`<div class="dl-item" style="background:rgba(0,0,0,.2);margin-bottom:3px">
+              <div><div class="dl-lbl">${i.l}</div><div class="dl-note">${i.n}</div></div>
+              <div class="dl-val" style="color:${s.col}">${fmt(Math.abs(i.v))}</div>
+            </div>`).join('')}
+          </div>`).join('')}
       </div>`;
     }).join('')}
-    ${!uniq.length?`<div class="empty"><div class="empty-i">\uD83D\uDCC5</div><div>Inserisci ricavi negli anni</div></div>`:''}
   </div>`;
 }
 // ── AI ────────────────────────────────────────────────────────────────────────
@@ -1072,7 +1314,7 @@ function buildAI(){
 function bindEv(){const c=document.getElementById('cmsg');if(c)c.scrollTop=c.scrollHeight;}
 function setY(y){curY=y;curT='dati';R();}
 function setT(t){
-  if(['storico','scadenze','ai','f24'].includes(t)) curY=Math.max(...Object.keys(S.years).map(Number));
+  if(['storico','scadenze','ai','f24','affitto'].includes(t)) curY=Math.max(...Object.keys(S.years).map(Number));
   if(t==='mensile'&&parseInt(curY)<2026) return;
   curT=t;R();
 }
