@@ -109,7 +109,7 @@ padding:8px 0;border-bottom:1px solid #f1f5f9}
 .txl{font-size:0.75rem;color:#64748b}
 .txs{font-size:0.6875rem;color:#94a3b8;margin-top:1px}
 .txv{font-size:0.875rem;font-weight:700;font-family:var(--mono)}
-.txr.big .txl{font-size:0.9375rem;color:#f1f5f9;font-weight:700}
+.txr.big .txl{font-size:0.9375rem;color:#0f172a;font-weight:700}
 .txr.big .txv{font-size:1.125rem;font-weight:900}
 .cg{color:var(--g)}.cr{color:var(--r)}.ca{color:var(--a)}
 .cb{color:var(--b)}.cp{color:var(--p)}.cw{color:#f1f5f9}.cm{color:var(--mut)}
@@ -277,8 +277,8 @@ const DEFAULTS={apiKey:'',proroga:false,years:{
   2027:{ricavi:0,aliq:15,accI:0,accN:0,inpsEff:0,note:'Creato automaticamente per catena acconti.',monthly:emptyMonthly()}
 },
 affitto:{
-  2025:{canone:650,mesi:10,cedolare:1365,acconti:0,imuGiu:129,imuDic:129,note:'Contratto 27/02/2025-26/02/2026 \u00b7 Edil Europa Srl \u00b7 Cedolare 21% \u00b7 10 mesi (mar-dic) \u00b7 IMU Golasecca aliq.10,60\u2030'},
-  2026:{canone:650,mesi:12,cedolare:1638,acconti:0,imuGiu:129,imuDic:129,note:'Contratto 27/02/2026-26/02/2027 \u00b7 Edil Europa Srl \u00b7 Cedolare 21% \u00b7 12 mesi'}
+  2025:{canone:650,mesi:11,cedolare:1502,acconti:0,imuGiu:129,imuDic:129,addRegionale:461,note:'Contratto 27/02/2025-26/02/2026 \u00b7 Edil Europa Srl \u00b7 Cedolare 21% \u00b7 11 mesi (feb-dic) \u00b7 IMU Golasecca aliq.10,60\u2030 \u00b7 Add.Reg. \u20ac461'},
+  2026:{canone:650,mesi:12,cedolare:1638,acconti:0,imuGiu:129,imuDic:129,addRegionale:0,accManuale:0,note:'Contratto 27/02/2026-26/02/2027 \u00b7 Edil Europa Srl \u00b7 Cedolare 21% \u00b7 12 mesi'}
 }};
 function load(){try{const r=localStorage.getItem(STORE);if(r){const d=JSON.parse(r);
   Object.keys(d.years).forEach(y=>{
@@ -286,6 +286,10 @@ function load(){try{const r=localStorage.getItem(STORE);if(r){const d=JSON.parse
     if(d.years[y].inpsEff===undefined)d.years[y].inpsEff=0;
   });
   if(!d.affitto) d.affitto=JSON.parse(JSON.stringify(DEFAULTS.affitto));
+  Object.keys(d.affitto).forEach(y=>{
+    if(d.affitto[y].addRegionale===undefined) d.affitto[y].addRegionale=0;
+    if(d.affitto[y].accManuale===undefined) d.affitto[y].accManuale=0;
+  });
   return d;}}catch(e){}return JSON.parse(JSON.stringify(DEFAULTS));}
 function save(){try{localStorage.setItem(STORE,JSON.stringify(S));}catch(e){}}
 let S=load();
@@ -426,7 +430,7 @@ function buildF24(){
             return`<tr>
               <td style="color:var(--g);font-weight:800">${c.codice}</td>
               <td style="font-family:'Inter',sans-serif;color:var(--sub);font-size:11px">${c.descrizione||'\u2014'}</td>
-              <td style="color:#f1f5f9">${fmtD(parseFloat(c.importo)||0)}</td>
+              <td style="color:#0f172a">${fmtD(parseFloat(c.importo)||0)}</td>
               <td>${badge}</td>
             </tr>`;
           }).join('')}
@@ -727,7 +731,7 @@ function buildDati(yr){
         ${curY===2022?`<div class="al i" style="font-size:10px">\u2705 RPF 2023: Ricavi \u20AC4.795 \u00b7 INPS \u20AC981 \u00b7 Imposta \u20AC561 \u00b7 Primo anno</div>`:''}
         ${curY===2023?`<div class="al i" style="font-size:10px">\u2705 RPF 2024: Ricavi \u20AC17.177 \u00b7 INPS \u20AC3.514 \u00b7 versata \u20AC1.767 \u00b7 Imposta \u20AC1.745</div>`:''}
         ${curY===2024?`<div class="al i" style="font-size:10px">\u2705 RPF 2025: Ricavi \u20AC11.174 \u00b7 INPS \u20AC2.272 \u00b7 versata \u20AC3.729 \u00b7 Imposta \u20AC748</div>`:''}
-        ${curY===2025?`<div class="al i" style="font-size:10px">\u2705 Ricavi \u20AC12.031 (96 fatture) \u00b7 accI \u20AC554 \u00b7 accN \u20AC1.722</div>`:''}
+        ${curY===2025?`<div class="al i" style="font-size:10px">\u2705 Ricavi \u20AC12.031 (96 fatture) \u00b7 accI \u20AC554 \u00b7 accN \u20AC1.722 \u00b7 Cedolare \u20AC1.502 (11 mesi) \u00b7 Add.Reg. \u20AC461</div>`:''}
       </div>
       ${ricavi>0?buildThreshold(ricavi):''}
       </div>
@@ -976,10 +980,23 @@ function buildAffitto(){
               <input type="number" value="${a.acconti||0}" onchange="updAffitto(${y},'acconti',this.value)"/></div>
               <div class="fnote">Totale gi\u00e0 versato nell'anno ${y}</div>
             </div>
+            <div class="fld">
+              <label class="flbl">Addizionale regionale (cod. 1668) (\u20ac)</label>
+              <div class="iw" style="border-color:rgba(124,58,237,.3)"><div class="ipfx" style="color:var(--p)">\u20AC</div>
+              <input type="number" value="${a.addRegionale||0}" onchange="updAffitto(${y},'addRegionale',this.value)"/></div>
+              <div class="fnote">\u2705 2025: \u20ac461 (da RPF commercialista) \u00b7 Cod. 1668 \u00b7 Lombardia</div>
+            </div>
+            <div class="fld">
+              <label class="flbl">Acconto cedolare manuale (cod. 1840) (\u20ac)</label>
+              <div class="iw" style="border-color:rgba(37,99,235,.3)"><div class="ipfx" style="color:var(--b)">\u20AC</div>
+              <input type="number" value="${a.accManuale||0}" onchange="updAffitto(${y},'accManuale',this.value)"/></div>
+              <div class="fnote">Inserisci il valore reale dal F24 se diverso dal calcolo auto \u00b7 es. 2026: \u20ac917,35</div>
+            </div>
             <div style="padding:10px 14px;border-radius:9px;background:rgba(248,113,113,.07);border:1px solid rgba(248,113,113,.2);margin-top:4px">
               <div style="font-size:9px;color:var(--r);font-weight:700;margin-bottom:4px">SALDO CEDOLARE ${y}</div>
               <div style="font-size:20px;font-weight:900;color:${saldoCed>0?'var(--r)':'var(--g)'};font-family:var(--mono)">${fmt(saldoCed)}</div>
               <div style="font-size:9px;color:var(--mut);margin-top:3px">${saldoCed>0?'da pagare in dichiarazione':'gi\u00e0 coperto'}</div>
+              ${(a.addRegionale||0)>0?`<div style="margin-top:6px;font-size:9px;color:var(--p);font-weight:700">+ Add. Regionale cod.1668: ${fmt(a.addRegionale||0)}</div>`:''}
             </div>
           </div>
           <div>
@@ -1000,12 +1017,18 @@ function buildAffitto(){
               <div style="font-size:9px;color:var(--a);font-weight:700;margin-bottom:3px">IMU TOTALE ${y}</div>
               <div style="font-size:18px;font-weight:900;color:var(--a);font-family:var(--mono)">${fmt(imuTot)}</div>
             </div>
-            <div style="margin-top:12px;padding:10px 14px;border-radius:9px;background:var(--bg3);border:1px solid rgba(52,211,153,.08)">
-              <div style="font-size:9px;color:var(--mut);font-weight:700;margin-bottom:6px">ACCONTI CEDOLARE ${y+1} (metodo storico)</div>
+            <div style="margin-top:12px;padding:10px 14px;border-radius:9px;background:#f8fafc;border:1px solid #e2e8f0">
+              <div style="font-size:9px;color:var(--mut);font-weight:700;margin-bottom:6px">ACCONTI CEDOLARE ${y+1} ${(a.accManuale||0)>0?'(da F24 manuale)':'(metodo storico 40%/60%)'}</div>
+              ${(a.accManuale||0)>0?`
+              <div class="al w" style="font-size:10px;margin-bottom:6px;padding:6px 10px">&#9888;&#65039; Acconto manuale inserito: usa il valore reale del F24</div>
+              <div style="display:flex;gap:14px">
+                <div><div style="font-size:9px;color:var(--mut)">Giugno ${y+1}</div><div style="font-size:15px;font-weight:900;color:var(--r);font-family:var(--mono)">${fmt(a.accManuale||0)}</div></div>
+                <div><div style="font-size:9px;color:var(--mut);margin-top:14px">inserito manualmente dal F24</div></div>
+              </div>`:`
               <div style="display:flex;gap:14px">
                 <div><div style="font-size:9px;color:var(--mut)">Giugno ${y+1} (40%)</div><div style="font-size:15px;font-weight:900;color:var(--r);font-family:var(--mono)">${fmt(accGiu)}</div></div>
                 <div><div style="font-size:9px;color:var(--mut)">Novembre ${y+1} (60%)</div><div style="font-size:15px;font-weight:900;color:var(--a);font-family:var(--mono)">${fmt(accNov)}</div></div>
-              </div>
+              </div>`}
             </div>
           </div>
         </div>
@@ -1018,9 +1041,10 @@ function buildAffitto(){
             <div style="font-size:9px;color:var(--a);font-weight:700;margin-bottom:3px">IMU ${y}</div>
             <div style="font-size:18px;font-weight:900;color:var(--a);font-family:var(--mono)">${fmt(imuTot)}</div>
           </div>
-          <div style="padding:10px 14px;border-radius:9px;background:rgba(52,211,153,.07);border:1px solid var(--gb)">
+          <div style="padding:10px 14px;border-radius:9px;background:rgba(52,211,153,.07);border:1px solid rgba(5,150,105,.2)">
             <div style="font-size:9px;color:var(--g);font-weight:700;margin-bottom:3px">TOTALE USCITE ${y}</div>
-            <div style="font-size:18px;font-weight:900;color:var(--g);font-family:var(--mono)">${fmt(totAnno)}</div>
+            <div style="font-size:18px;font-weight:900;color:var(--g);font-family:var(--mono)">${fmt(totAnno+(a.addRegionale||0))}</div>
+            ${(a.addRegionale||0)>0?`<div style="font-size:9px;color:var(--mut);margin-top:2px">incl. add.reg. ${fmt(a.addRegionale||0)}</div>`:''}
           </div>
         </div>
         <div class="fld" style="margin-top:12px">
@@ -1148,16 +1172,19 @@ function buildScadenze(){
     });
   });
 
-  // ── CEDOLARE SECCA AFFITTO ──
+  // ── CEDOLARE SECCA AFFITTO + ADDIZIONALE REGIONALE ──
   if(S.affitto){
     Object.keys(S.affitto).map(Number).sort((a,b)=>a-b).forEach(y=>{
       const a=S.affitto[y];
       const ced=a.cedolare||Math.round((a.canone||650)*(a.mesi||12)*0.21);
       if(!ced) return;
-      const acc1=Math.round(ced*0.40);
-      const acc2=Math.round(ced*0.60);
+      // Usa acconto manuale se inserito, altrimenti calcola automatico
+      const hasManuale=(a.accManuale||0)>0;
+      const acc1=hasManuale?(a.accManuale||0):Math.round(ced*0.40);
+      const acc2=hasManuale?0:Math.round(ced*0.60);
       const saldo=Math.max(0,ced-(a.acconti||0));
-      // Saldo cedolare anno y → giugno y+1 (nella dichiarazione dei redditi)
+      const addReg=a.addRegionale||0;
+      // Saldo cedolare anno y → giugno y+1
       if(saldo>0) all.push({
         y:y+1,m:6,
         date:`Giugno ${y+1}`,
@@ -1166,14 +1193,23 @@ function buildScadenze(){
         tot:saldo,
         items:[{l:`Saldo cedolare secca ${y}`,v:saldo,n:'730/UNICO · 21% su €'+(a.canone||650)+'×'+(a.mesi||12)+'mesi'}]
       });
-      // Acconti cedolare anno y+1 → giugno y+1 (40%) e novembre y+1 (60%)
+      // Addizionale regionale cod.1668 → giugno y+1
+      if(addReg>0) all.push({
+        y:y+1,m:6,
+        date:`Giugno ${y+1}`,
+        tipo:'addregionale',
+        col:'var(--p)',bg:'rgba(124,58,237,.05)',bd:'rgba(124,58,237,.2)',
+        tot:addReg,
+        items:[{l:`Addizionale regionale ${y}`,v:addReg,n:'Cod. 1668 · Lombardia'}]
+      });
+      // Acconti cedolare anno y+1
       if(acc1>0) all.push({
         y:y+1,m:6,
         date:`Giugno ${y+1}`,
         tipo:'cedolare-acc',
         col:'var(--b)',bg:'rgba(96,165,250,.04)',bd:'rgba(96,165,250,.15)',
         tot:acc1,
-        items:[{l:`1° acc. cedolare ${y+1} (40%)`,v:acc1,n:'Cod. 1840 · su cedolare ${y}'}]
+        items:[{l:`${hasManuale?'Acc. cedolare manuale':'1° acc. cedolare '+y+1+' (40%)'}`,v:acc1,n:'Cod. 1840'+(hasManuale?' · valore da F24':' · su cedolare '+y)}]
       });
       if(acc2>0) all.push({
         y:y+1,m:11,
@@ -1181,7 +1217,7 @@ function buildScadenze(){
         tipo:'cedolare-acc',
         col:'var(--b)',bg:'rgba(96,165,250,.04)',bd:'rgba(96,165,250,.15)',
         tot:acc2,
-        items:[{l:`2° acc. cedolare ${y+1} (60%)`,v:acc2,n:'Cod. 1840 · su cedolare ${y}'}]
+        items:[{l:`2° acc. cedolare ${y+1} (60%)`,v:acc2,n:'Cod. 1840 · su cedolare '+y}]
       });
     });
   }
@@ -1231,6 +1267,7 @@ function buildScadenze(){
     forfettario:'🟢 Forfettario',
     'cedolare-acc':'🔵 Cedolare acc.',
     cedolare:'🔵 Cedolare saldo',
+    addregionale:'🟣 Add. Regionale',
     imu:'🟡 IMU'
   };
 
@@ -1249,20 +1286,20 @@ function buildScadenze(){
       return`<div class="dl-card" style="background:var(--bg3);border:${borderMain};${past?'opacity:.45':''}margin-bottom:12px">
         <div class="dl-head" style="margin-bottom:8px">
           <div>
-            <div class="dl-date" style="color:${past?'var(--mut)':'#f1f5f9'};font-size:1rem">
+            <div class="dl-date" style="color:${past?'var(--mut)':'#0f172a'};font-size:1rem">
               📅 ${g.date}${past?' <span style="font-size:9px;color:var(--mut)">· passato</span>':''}${isCurrent?' <span style="font-size:9px;color:var(--g)">· QUESTO MESE</span>':''}
             </div>
             <div style="font-size:10px;color:var(--mut);margin-top:2px">${g.sezioni.map(s=>TIPO_BADGE[s.tipo]).join(' · ')}</div>
           </div>
           <div>
             <div style="font-size:9px;color:var(--mut);text-align:right">TOTALE</div>
-            <div class="dl-tot" style="color:${past?'var(--mut)':'#f1f5f9'}">${fmt(g.totale)}</div>
+            <div class="dl-tot" style="color:${past?'var(--mut)':'#0f172a'}">${fmt(g.totale)}</div>
           </div>
         </div>
         ${g.sezioni.map(s=>`
           <div style="background:${s.bg};border:1px solid ${s.bd};border-radius:8px;padding:10px 12px;margin-bottom:6px">
             <div style="font-size:9px;color:${s.col};font-weight:700;letter-spacing:.8px;margin-bottom:6px">${TIPO_BADGE[s.tipo].toUpperCase()} · ${fmt(s.tot)}</div>
-            ${s.items.map(i=>`<div class="dl-item" style="background:rgba(0,0,0,.2);margin-bottom:3px">
+            ${s.items.map(i=>`<div class="dl-item" style="background:rgba(0,0,0,.04);margin-bottom:3px">
               <div><div class="dl-lbl">${i.l}</div><div class="dl-note">${i.n}</div></div>
               <div class="dl-val" style="color:${s.col}">${fmt(Math.abs(i.v))}</div>
             </div>`).join('')}
